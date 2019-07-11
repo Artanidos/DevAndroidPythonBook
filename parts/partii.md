@@ -112,13 +112,13 @@ user@machine:/path$ pip3 install pyqtdeploy
 
 ###Java JDK 8
 
-You should be able to find all you need to install Java JDK 8 here: <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html">https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html</a>
+You should be able to find all you need to install Java JDK 8 here: [https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html](https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)
 
 Just to mention I had problem to build the package with Java JDK 10 installed. 
 
 ###Android SDK
 
-To install the Android SDK go to <a href="https://developer.android.com/studio">https://developer.android.com/studio</a> scroll down to *Command line tools only* and download the file for your platform.   
+To install the Android SDK go to [https://developer.android.com/studio](https://developer.android.com/studio) scroll down to *Command line tools only* and download the file for your platform.   
 Then unzip the file somewhere on your computer. 
 After unzipping go to the Sdk/tools/bin directory and run to install all necessary tools:
 
@@ -128,14 +128,14 @@ user@machine:/path$ ./sdkmanager "platform-tools" "platforms;android-28"
 
 ###Android NDK
 
-To install the Android NDK go to <a href="https://developer.android.com/ndk/downloads">https://developer.android.com/ndk/downloads</a> scroll down to *Older Versions*, click the link *NDK Archives*, agree to the terms and download *Android NDK, Revision 19c* for your platform (Unfortuneatly version 20 is not working for us yet).   
+To install the Android NDK go to [https://developer.android.com/ndk/downloads](https://developer.android.com/ndk/downloads) scroll down to *Older Versions*, click the link *NDK Archives*, agree to the terms and download *Android NDK, Revision 19c* for your platform (Unfortuneatly version 20 is not working for us yet).   
 After downloading unzip all the file into the SDK directory as *ndk-bundle*.
 Your Android directory should look like the following:   
 ![AltText](../images/tree.png "Title")
 
 ###QtCreator
 
-Now we also need Qt. You can download it here: <a href="https://www.qt.io/download">https://www.qt.io/download</a>.
+Now we also need Qt. You can download it here: [https://www.qt.io/download](https://www.qt.io/download).
 You should install the following components.   
 ![AltText](../images/qt.png "Title")   
 You need Desktop to test your apps on the desktop.   
@@ -145,17 +145,17 @@ you need Android ARMv7 to test on a 32 bit device.
 
 ###Source packages
 
--openssl-1.0.2s.tar.gz from [https://www.openssl.org/source/](https://www.openssl.org/source/)
--PyQt3D_gpl-5.12.tar.gz from [https://www.riverbankcomputing.com/software/pyqt3d/download](https://www.riverbankcomputing.com/software/pyqt3d/download)
--PyQt5_gpl-5.12.1.tar.gz from [https://www.riverbankcomputing.com/software/pyqt/download5](https://www.riverbankcomputing.com/software/pyqt/download5)
--PyQtChart_gpl-5.12.tar.gz from [https://www.riverbankcomputing.com/software/pyqtchart/download](https://www.riverbankcomputing.com/software/pyqtchart/download)
--PyQtDataVisualization_gpl-5.12.tar.gz from [https://www.riverbankcomputing.com/software/pyqtdatavisualization/download](https://www.riverbankcomputing.com/software/pyqtdatavisualization/download)
--PyQtPurchasing_gpl-5.12.tar.gz from [https://www.riverbankcomputing.com/software/pyqtpurchasing/download](https://www.riverbankcomputing.com/software/pyqtpurchasing/download)
--Python-3.7.2.tar.xz from [https://www.python.org/downloads/source/](https://www.python.org/downloads/source/)
--QScintilla_gpl-2.11.1.tar.gz from [https://www.riverbankcomputing.com/software/qscintilla/download](https://www.riverbankcomputing.com/software/qscintilla/download)
--qt-everywhere-src-5.12.2.tar.xz from [http://download.qt.io/official_releases/qt/5.12/5.12.2/single/qt-everywhere-src-5.12.2.tar.xz.mirrorlist](http://download.qt.io/official_releases/qt/5.12/5.12.2/single/qt-everywhere-src-5.12.2.tar.xz.mirrorlist)
--sip-4.19.15.tar.gz from [https://www.riverbankcomputing.com/software/sip/download](https://www.riverbankcomputing.com/software/sip/download)
--zlib-1.2.11.tar.gz from [https://zlib.net/](https://zlib.net/)
+-openssl-1.0.2s.tar.gz from [https://www.openssl.org/source/](https://www.openssl.org/source/)  
+-PyQt3D_gpl-5.12.tar.gz from [https://www.riverbankcomputing.com/software/pyqt3d/download](https://www.riverbankcomputing.com/software/pyqt3d/download)  
+-PyQt5_gpl-5.12.1.tar.gz from [https://www.riverbankcomputing.com/software/pyqt/download5](https://www.riverbankcomputing.com/software/pyqt/download5)  
+-PyQtChart_gpl-5.12.tar.gz from [https://www.riverbankcomputing.com/software/pyqtchart/download](https://www.riverbankcomputing.com/software/pyqtchart/download)  
+-PyQtDataVisualization_gpl-5.12.tar.gz from [https://www.riverbankcomputing.com/software/pyqtdatavisualization/download](https://www.riverbankcomputing.com/software/pyqtdatavisualization/download)  
+-PyQtPurchasing_gpl-5.12.tar.gz from [https://www.riverbankcomputing.com/software/pyqtpurchasing/download](https://www.riverbankcomputing.com/software/pyqtpurchasing/download)  
+-Python-3.7.2.tar.xz from [https://www.python.org/downloads/source/](https://www.python.org/downloads/source/)  
+-QScintilla_gpl-2.11.1.tar.gz from [https://www.riverbankcomputing.com/software/qscintilla/download](https://www.riverbankcomputing.com/software/qscintilla/download)  
+-qt-everywhere-src-5.12.2.tar.xz from [http://download.qt.io/official_releases/qt/5.12/5.12.2/single/qt-everywhere-src-5.12.2.tar.xz.mirrorlist](http://download.qt.io/official_releases/qt/5.12/5.12.2/single/qt-everywhere-src-5.12.2.tar.xz.mirrorlist)  
+-sip-4.19.15.tar.gz from [https://www.riverbankcomputing.com/software/sip/download](https://www.riverbankcomputing.com/software/sip/download)  
+-zlib-1.2.11.tar.gz from [https://zlib.net/](https://zlib.net/)  
 
 
 Do not unpack these files!!!   
@@ -175,7 +175,7 @@ python3.7 build.py --target android-32 --installed-qt-dir /home/art/Qt/5.12.3 --
 
 ###Create the build.py script
 
-The build.py I have got from here: <a href="https://pypi.org/project/pyqtdeploy/#files">https://pypi.org/project/pyqtdeploy/#files</a> from the Demo project.
+The build.py I have got from here: [https://pypi.org/project/pyqtdeploy/#files](https://pypi.org/project/pyqtdeploy/#files) from the Demo project.
 I have just added these lines of code: 
 
 *Deploy/build.py* 
