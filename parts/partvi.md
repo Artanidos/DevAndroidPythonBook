@@ -16,6 +16,4 @@ The app itself uses the lib httpimport to load Python files over the internet an
 To begin with here is small sample which you can try on your desktop first.
 ```python
 import httpimport
-
-# to be continued
 ```
