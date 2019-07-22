@@ -1,3 +1,9 @@
 Deploy/lib/__pycache__/
 Deploy/sysroot-android-32/
 Deploy/build-android-32/
+DeployAndroid/lib/__pycache__/
+DeployAndroid/sysroot-android-32/
+DeployAndroid/build-android-32/
+DeployDesktop/packages/com.vendor.product/data/bin
+DeployDesktop/build
+DeployDesktop/dist
