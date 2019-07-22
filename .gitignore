@@ -7,3 +7,6 @@ DeployAndroid/build-android-32/
 DeployDesktop/packages/com.vendor.product/data/bin
 DeployDesktop/build
 DeployDesktop/dist
+DemoApplication*
+main.spec
+*.pyc
