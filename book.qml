@@ -1,11 +1,10 @@
 import EbookCreator 1.0
 
 Ebook {
-    name: "Develop Android apps using Python and PyQt5"
+    name: "Develop Cross Platform apps using Python and PyQt5"
     language: "en"
     theme: "default"
     creator: "Artanidos"
-    publisher: "Artanidos"
     Part {
         src: "description.md"
         name: "Cover"
@@ -37,6 +36,10 @@ Ebook {
     Part {
         src: "partvi.md"
         name: "Part VI"
+    }
+    Part {
+        src: "partvii.md"
+        name: "Part VII"
     }
     Part {
         src: "end.md"

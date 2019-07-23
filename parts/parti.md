@@ -3,7 +3,7 @@
 ##Installation
 
 Here we are going to install all necessary software to be able to write code and test it at least on the desktop. 
-To be able to also deploy the app to an Android device we will install additional software in the deployment chapter later in this book. 
+To be able to also deploy the app to other devices we will install additional software in the deployment chapter later in this book. 
 
 I assume that you already have installed Python3 and Pip. If not you should find all necessary information on the [Python](https://python.org) website. We need version 3.7.   
 I also assume that you able to install software using pip. 
