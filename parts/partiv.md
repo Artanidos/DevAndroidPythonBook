@@ -312,7 +312,7 @@ Also copy the APK path which will be displayed after the build process has finis
 
 I have put the whole command into the *deploy.sh* file to use it later.
 
-#Summary
+##Summary
 
 Hopefully we have deployed the demo app to our device. 
 To find out how to build and deploy to Android took me several days.   
