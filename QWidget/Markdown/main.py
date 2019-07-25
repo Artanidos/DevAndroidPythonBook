@@ -1,6 +1,7 @@
 import sys
 import os
-from PyQt5.QtWidgets import QApplication, QMainWindow, QSplitter, QTextEdit, QAction, QMessageBox, QFileDialog, QDialog, QStyleFactory
+from PyQt5.QtWidgets import (QApplication, QMainWindow, QSplitter, QTextEdit, QAction, 
+                             QMessageBox, QFileDialog, QDialog, QStyleFactory)
 from PyQt5.QtCore import Qt, QCoreApplication, QSettings, QByteArray, QUrl
 from PyQt5.QtGui import QIcon, QKeySequence
 from PyQt5.QtWebEngineWidgets import QWebEngineView

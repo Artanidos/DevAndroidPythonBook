@@ -26,9 +26,9 @@ class MainWindow(QMainWindow):
         list.setModel(self.model)
         self.setCentralWidget(list)
 
-        self.model.itemChanged.connect(self.on_item_changed)
+        self.model.itemChanged.connect(self.onItemChanged)
 
-    def on_item_changed(self, item):
+    def onItemChanged(self, item):
         if not item.checkState():
             print(item.text() + " has been unchecked")
         else:
