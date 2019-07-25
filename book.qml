@@ -6,10 +6,6 @@ Ebook {
     theme: "default"
     creator: "Artanidos"
     Part {
-        src: "description.md"
-        name: "Cover"
-    }
-    Part {
         src: "preface.md"
         name: "Preface"
     }

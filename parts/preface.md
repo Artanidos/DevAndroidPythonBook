@@ -41,9 +41,9 @@ And in ***Part V*** you will learn to create a setup program which you can deplo
 
 The following typographical conventions are used in this book. 
 
-*Cursiv*
+*Italic*
 <blockquote>
-  Used for file name and paths  
+  Used for filenames and paths  
 </blockquote>
 
 ```

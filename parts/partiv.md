@@ -5,7 +5,7 @@ Therefore we first have to install a few other components.
 
 ##Install pyqtdeploy 2.4
 
-pyqtdeploy is a tool made by the same company who also created pyqt5.   
+pyqtdeploy is a tool made by the same company who also created PyQt5.   
 You can install pyqtdeploy via pip.  
 
 ```console
@@ -22,7 +22,7 @@ Just to mention I had problem to build the package with Java JDK 10 installed.
 
 To install the Android SDK go to [https://developer.android.com/studio](https://developer.android.com/studio) scroll down to *Command line tools only* and download the file for your platform.   
 Then unzip the file somewhere on your computer. 
-After unzipping go to the Sdk/tools/bin directory and run to install all necessary tools:
+After unzipping go to the Sdk/tools/bin directory and run the sdkmanager to install all necessary tools:
 
 ```console
 user@machine:/path$ ./sdkmanager "platform-tools" "platforms;android-28"
@@ -102,7 +102,7 @@ androiddeployqt will be called by pyqtdeploy.
 You can find the complete build.py and all other source files in the github repo: [https://github.com/Artanidos/DevAndroidPythonBook](https://github.com/Artanidos/DevAndroidPythonBook)  
 
 With the ANDROID*PACKAGE*SOURCE_DIR we specify that we have got Android specific files like the *AndroidManifest.xml* and the icons in this specific folder.   
-Also an app theme is included there. This theme only has one importend thing *Theme.DeviceDefault.Light.NoActionBar*.
+Also an app theme is included there. This theme only has one important thing *Theme.DeviceDefault.Light.NoActionBar*.
 This is needed to make the splash screen look not so ugly.   
 This is the default splash screen. With this little change the screen is just white.  
 
@@ -281,7 +281,9 @@ If all went well we are now able to build the APK and deploy it to a device.
 Therefore we run ```./build.sh``` in the terminal. Make sure that *build.sh* is executable.
 This first will create a sysroot directory with tools and libraries. If you are going to build the APK a second time you can skip building the sysroot with this option in the *build.sh*: 
 
-```--no-sysroot```
+```
+--no-sysroot
+```
 
 ##Install APK to device
 

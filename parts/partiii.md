@@ -121,8 +121,11 @@ if __name__ == "__main__":
     sys.exit(app.exec())
 ```
 ###Layout
-In this sample we have got the window and inside this window we use a simple QWidget as central widget for the purpose to set the layout of this widget to QGridView. A QGridView arranges all widgets in a row and column fashion. The column count will be emerged depending on the usage of the grid. If you are for example adding a widget with ```layout.addWidget(widget, 0, 1)``` then a widget at row 0 and column 1 will be added. This leads to a column count of 2. If you also define a row- and column span to this method like ```layout.addWidget(widget, 0, 1, 1, 4)``` then the the column count will be set to 5.  
-Inside this QGridLayout we use two other layouts. The QVBoxLayout arranges widgets in a vertical direction and the QHBoxLayout lays out widget horizontally. In the case of the ```hbox``` we are using a stretch object to align the buttons to the right side.  
+In this sample we have got the window and inside this window we use a simple QWidget as central widget for the purpose to set the layout of this widget to QGridView. A QGridView arranges all widgets in a row and column fashion. The column count will be emerged depending on the usage of the grid. If you are for example adding a widget with ```layout.addWidget(widget, 0, 1)
+``` then a widget at row 0 and column 1 will be added. This leads to a column count of 2. If you also define a row- and column span to this method like ```layout.addWidget(widget, 0, 1, 1, 4)  
+``` then the the column count will be set to 5.  
+Inside this QGridLayout we use two other layouts. The QVBoxLayout arranges widgets in a vertical direction and the QHBoxLayout lays out widget horizontally. In the case of the ```hbox
+``` we are using a stretch object to align the buttons to the right side.  
 To set the window width we use this little trick:
 ```
 self.name_edit.setMinimumWidth(200)
@@ -295,7 +298,8 @@ class TreeNode(object):
         in_child._row = len(self._children)
         self._children.append(in_child)
         self._columncount = max(in_child.columnCount(), self._columncount)
-```
+```  
+
 When subclassing QAbstractItemModel, at the very least you must implement index(), parent(), rowCount(), columnCount(), and data(). These functions are used in all read-only models, and form the basis of editable models.
 
 *QWidget/TreeView/main.py*
@@ -442,7 +446,7 @@ msg.setIcon(QMessageBox.Critical)
 ##User Defined Widgets
 Sometimes you are missing a specific widget and if you are not able to download it somewhere, then you have to create it on your own.  
 In the following example I will introduce a DockWidget, a ScrollArea and of course a user defined widget called Expander.  
-I remember that I saw an expander it in an email client on Windows for the first time.  
+I remember that I saw an expander in an email client on Windows for the first time.  
 The usage is very simple. Just click on the rectangle an the content will expand. The content can be a list of menuitems, a text edit, a listbox or whatever.  
 
 *QWidget/UserDefined/main.py*
@@ -740,7 +744,7 @@ def color(self, color):
 ```
 
 Another nice trick is the use of an SVG (scalable vector graphic) image as an icon.  
-For this trick we are opening an svg image, replace a specific color with the actual hilite color and then we are creating a pixmap from the svg to use a icon. I have created the svg icon using InkScape. There I have set the color to #ff00ff and in the createIcon method I just replace this color string with the hilite color name. Just to be clear. SVG is a xml based image so we can edit the colors as text.
+For this trick we are opening an svg image, replacing a specific color with the actual hilite color and then we are creating a pixmap from the svg to use a icon. I have created the svg icon using InkScape. There I have set the color to #ff00ff and in the createIcon method I just replace this color string with the hilite color name. Just to be clear. SVG is a xml based image so we can edit the colors as text.
 ```python
 data.replace("#ff00ff", hilite_color)
 ```
@@ -962,8 +966,11 @@ The actions like new_act, open_act and save_act are used twice here. First we us
 
 When you define a menu action then the shortcut letter is marked with the "&". Like the letter "S" in the "&Save" action. Be aware not to use one single letter twice in the same menu.  
 
-The QTextEdit widget can be used to edit plain text and also rich text. Therefore we use ```self.text_edit.setPlainText(text)``` to set the content.  
+The QTextEdit widget can be used to edit plain text and also rich text. Therefore we use ```self.text_edit.setPlainText(text)
+``` to set the content.  
 
-In this sample the statusBar is used to display messages like ```self.statusBar().showMessage("File loaded", 2000)``` and also to display infos for some menuitems ```exit_act.setStatusTip("Exit the application")```.  
+In this sample the statusBar is used to display messages like ```self.statusBar().showMessage("File loaded", 2000)
+``` and also to display infos for some menuitems ```exit_act.setStatusTip("Exit the application")
+```
 
 The above editor was the base for one of my projects called EbookCreator. I have developed the EbookCreator just to be able to write this book. The EbookCreator is also written using Python and PyQt5 and is therefore a good source for you to learn from. The source code is available [here](https://github.com/Artanidos/EbookCreator).  
