@@ -44,7 +44,7 @@ if __name__ == "__main__":
     sys.exit(app.exec())
 ```
 
-<p align="center"><img src="../images/hello.png"/></p>
+![hello](../images/hello.png "hello")
 
 The sample is simply self explanatory. We are creating an application object. Instantiate a window. Make the window visible and execute the app main loop.   
 In the window there is just a label widget which will be set as the central widget.   

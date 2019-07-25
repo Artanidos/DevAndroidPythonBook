@@ -11,7 +11,7 @@ I also assume that you able to install software using pip.
 First we will install [PyQt5](https://www.riverbankcomputing.com/software/pyqt/intro) which comes together with Qt5 to be able to code applications for the desktop. 
 
 ```console
-user@machine:/path$</span> pip install PyQt5
+user@machine:/path$ pip install PyQt5
 ```
 
 Then we will install [Visual Studio Code](https://code.visualstudio.com/) which is free and open source and has many good extensions to develop Python code. 
@@ -20,7 +20,7 @@ You can also use apt if you are on a Linux system.
 Use google search if there are some prerequisites missing. 
 
 ```console
-user@machine:/path$</span> sudo apt install code
+user@machine:/path$ sudo apt install code
 ```
 
 In the next chapter we will setup the environment to be able to write our first app. 
@@ -85,7 +85,7 @@ app.exec()
 In this case, because the python file is not named *main.py* we will run it using the terminal inside of VSCode.  
 
 ```console
-user@machine:/path$</span> python3 basic.py
+user@machine:/path$ python3 basic.py
 ```
 
 ![AltText](../images/simple.png "Title")  

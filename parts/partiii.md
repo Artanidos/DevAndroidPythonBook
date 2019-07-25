@@ -1,4 +1,4 @@
-# Part III QtWigets
+# Part III QtWidgets
 ## Base Widgets and Layouts
 Now we will use the most used basic widgets in a small desktop application to give you a first overview of widgets and layouts.  
 For more details on each widget I invite you to search on the internet.
