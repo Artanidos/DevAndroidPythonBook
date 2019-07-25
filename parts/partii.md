@@ -2,7 +2,7 @@
 
 ##Many Different Approaches
 
-Because of the fact that Python has been introduced in 1991, meanwhile there are a few userinterface approaches to develop Python.
+Because of the fact that Python has been introduced in 1991, meanwhile there are a few user interface approaches to develop Python.
 There is Tkinter which is a bridge to TK. Tkinter is been delivered with Python. 
 There is Kivy which has got a nice approach using a special pythonic language to declare the user interface. 
 There is BeeWare which compiles Python to Java-ByteCode which then can be deployed on an Android device. 
@@ -14,8 +14,8 @@ To use PyQt5 is a personal decision after working a few years with Qt5.
 Qt5 and PyQt5 are available under an open source license so you might use these frameworks for free as long as you plan to create open source programs. If you are going to create commercial software you have to purchase licenses for both frameworks. 
 Even when we using Qt5 we have got two options to develop apps for Android. 
 First option is QtWidgets which has been introduced to create platform independent desktops applications and QtQuick which uses a declarative way to implement user interfaces using QML (Qt Markup Language). 
-Because at the moment QtQuick lacks of a treeview and a tableview implementation I guess it has been primarily developed to satisfy mobile app development. 
-QtQuick has also implemented behaviors and transactions which you normally only see on mobile platforms. 
+Because at the moment QtQuick lacks of a tree view and a table view implementation I guess it has been primarily developed to satisfy mobile app development. 
+QtQuick has also implemented behaviours and transactions which you normally only see on mobile platforms. 
 If you have got design background then the QML approach could be your best choice because you don't really have to write code that much and when you like to write imperative code then QtWidgets might be your way. 
 
 ##Hello World (QtWidgets)
@@ -92,7 +92,7 @@ user@machine:/path$ python3 main.py
 
 ![AltText](../images/qtquick.png "Title")  
 
-This app is similar to the QtWidgets version except the fact that we use a QGuiApplication instead of a QApplication. And also a QQmlApplicationEngine is responsable to load the user interface.
+This app is similar to the QtWidgets version except the fact that we use a QGuiApplication instead of a QApplication. And also a QQmlApplicationEngine is responsible to load the user interface.
 
 ##Combining QWidget and QML
 A third possibility is to combine both QWidget and QML using the QQuickView inside a QWidget application.  

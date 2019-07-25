@@ -17,7 +17,7 @@ user@machine:/path$</span> pip install PyQt5
 Then we will install [Visual Studio Code](https://code.visualstudio.com/) which is free and open source and has many good extensions to develop Python code. 
 You can download VSCode [here](https://code.visualstudio.com/Download). I assume that you are able to install VSCode on your own. Otherwise you will find installation instructions on this website. 
 You can also use apt if you are on a Linux system. 
-Use google search if there are some prerequisits missing. 
+Use google search if there are some prerequisites missing. 
 
 ```console
 user@machine:/path$</span> sudo apt install code
