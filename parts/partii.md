@@ -131,7 +131,7 @@ if __name__ == "__main__":
     sys.exit(app.exec())
 ```
 
-*Combo/view.qml*
+*Combo/view.qml*  
 ```qml
 import QtQuick 2.1
 
@@ -164,3 +164,6 @@ Rectangle {
 ![Combo](../images/combo.png "Combo")  
 
 Be aware that you should not use many QQuickViews inside a QWidget window because of performance issues.
+
+##Summary
+We have seen three approaches to build GUI applications using Qt5. The QWidgets approach is mostly used to create desktop applications. The QML approach is mostly used to create mobile applications and the combination cann be used to create desktop applications where we use QML to render a part of thes desktop experience.

@@ -1,5 +1,6 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #FFFFFF;
 }
 
 table {
@@ -9,40 +10,43 @@ table {
 table, th, td {
     border: 1px solid black;
 }
-
 pre {
     display: block;
     margin-top: 0;
     margin-bottom: 1rem;
     font-size: 0.7rem;
     line-height: 1.4;
-    white-space: pre;
     overflow: auto;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     padding: .5rem;
-    max-height: 800px;
     font-family: monospace;
-}
-
-pre code {
+    white-space: -moz-pre-wrap !important;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  pre code {
     color: inherit;
     background-color: transparent;
     padding: 0;
     display: block;
-}
-
-pre .line-number {
+  }
+  
+  pre .line-number {
     display: block;
     float: left;
     margin: 0 1em 0 -1em;
     border-right: 1px solid #ddd;
     text-align: right;
-    width: 38px;
-}
-
-pre .line-number span {
+    width: 2.0rem;
+  }
+  
+  pre .line-number span {
     display: block;
     padding: 0 .5em 0 1em;
     color: #ccc;
-}
+  }
+  

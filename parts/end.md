@@ -12,4 +12,4 @@ Since 2016 he is writing open source software like the AnimationMaker, the FlatS
 He also has written a book about his life and Tantra.
 Since 2016 he is living in his mobile home in the middle of Berlin and he is also playing percussion on the streets.
 To write code he is going to a public library.
-That's an easy living. 
+That's an easy living.

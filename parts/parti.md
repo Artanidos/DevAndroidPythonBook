@@ -11,7 +11,8 @@ I also assume that you able to install software using pip.
 First we will install [PyQt5](https://www.riverbankcomputing.com/software/pyqt/intro) which comes together with Qt5 to be able to code applications for the desktop. 
 
 ```console
-user@machine:/path$ pip install PyQt5
+user@machine:/path$ pip3 install PyQt5
+user@machine:/path$ pip3 install PyQtWebEngine
 ```
 
 Then we will install [Visual Studio Code](https://code.visualstudio.com/) which is free and open source and has many good extensions to develop Python code. 
@@ -20,6 +21,8 @@ You can also use apt if you are on a Linux system.
 Use google search if there are some prerequisites missing. 
 
 ```console
+user@machine:/path$sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+user@machine:/path$ sudo apt update
 user@machine:/path$ sudo apt install code
 ```
 

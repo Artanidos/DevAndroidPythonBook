@@ -452,7 +452,8 @@ The usage is very simple. Just click on the rectangle an the content will expand
 *QWidget/UserDefined/main.py*
 ```python
 import sys
-from PyQt5.QtWidgets import QSizePolicy, QListWidget, QListWidgetItem, QApplication, QMainWindow, QLabel, QTextEdit, QVBoxLayout, QScrollArea, QDockWidget, QWidget
+from PyQt5.QtWidgets import (QSizePolicy, QListWidget, QListWidgetItem, QApplication, QMainWindow, QLabel, 
+			  QTextEdit, QVBoxLayout, QScrollArea, QDockWidget, QWidget)
 from PyQt5.QtCore import Qt
 from expander import Expander
 
@@ -558,7 +559,8 @@ The ScrollArea can contain widgets that are larger than the window itself. If it
 ```python
 import os
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel
-from PyQt5.QtCore import QParallelAnimationGroup, QPropertyAnimation, Qt, pyqtProperty, pyqtSignal, QDir, QFile, QIODevice
+from PyQt5.QtCore import (QParallelAnimationGroup, QPropertyAnimation, Qt, pyqtProperty, pyqtSignal, QDir, 
+		        QFile, QIODevice)
 from PyQt5.QtGui import QImage, QPalette, QPixmap, QColor, QIcon
 
 
@@ -618,7 +620,8 @@ class Expander(QWidget):
         self.icon.setPixmap(self.normal_icon)
         self.color = self.normal_color
 
-        self.hyper.setText("<a style=\"color: " + self.label_normal_color + " text-decoration: none\" href=\"#\">" + self.text + "</a>")
+        self.hyper.setText("<a style=\"color: " + self.label_normal_color + 
+	   " text-decoration: none\" href=\"#\">" + self.text + "</a>")
 
     def createIcon(self, source, hilite_color):
         temp = QDir.tempPath()
@@ -642,14 +645,16 @@ class Expander(QWidget):
             pal.setColor(QPalette.Background, self.selected_color)
             self.setPalette(pal)
             self.icon.setPixmap(self.selected_icon)
-            self.hyper.setText("<a style=\"color: " + self.label_selected_color + "; text-decoration: none;\" href=\"#\">" + self.text + "</a>")
+            self.hyper.setText("<a style=\"color: " + self.label_selected_color + 
+	       "; text-decoration: none;\" href=\"#\">" + self.text + "</a>")
         else:
             self.is_expanded = False
             pal = self.palette()
             pal.setColor(QPalette.Background, QColor(self.normal_color))
             self.setPalette(pal)
             self.icon.setPixmap(self.normal_icon)
-            self.hyper.setText("<a style=\"color: " + self.label_normal_color + "; text-decoration: none;\" href=\"#\">" + self.text + "</a>")
+            self.hyper.setText("<a style=\"color: " + self.label_normal_color + 
+	       "; text-decoration: none;\" href=\"#\">" + self.text + "</a>")
 
         if self.is_expanded:
             self.expandContent()
@@ -708,7 +713,8 @@ class Expander(QWidget):
             pal.setColor(QPalette.Background, QColor(self.hovered_color))
             self.setPalette(pal)
             self.icon.setPixmap(self.hovered_icon)
-            self.hyper.setText("<a style=\"color: " + self.label_hovered_color + "; text-decoration: none;\" href=\"#\">" + self.text + "</a>")
+            self.hyper.setText("<a style=\"color: " + self.label_hovered_color + 
+	       "; text-decoration: none;\" href=\"#\">" + self.text + "</a>")
         QWidget.enterEvent(self, event)
 
     def leaveEvent(self, event):
@@ -717,13 +723,15 @@ class Expander(QWidget):
             pal.setColor(QPalette.Background, QColor(self.normal_color))
             self.setPalette(pal)
             self.icon.setPixmap(self.normal_icon)
-            self.hyper.setText("<a style=\"color: " + self.label_normal_color + "; text-decoration: none;\" href=\"#\">" + self.text + "</a>")
+            self.hyper.setText("<a style=\"color: " + self.label_normal_color + 
+	       "; text-decoration: none;\" href=\"#\">" + self.text + "</a>")
         QWidget.leaveEvent(self, event)
 ```
 For the expander we are using some tricks.  
 First of all we are using the QLabel as a hyperlink control setting the text to mimic a html anchor.
 ```python
-self.hyper.setText("<a style=\"color: " + self.label_normal_color + " text-decoration: none\" href=\"#\">" + self.text + "</a>")
+self.hyper.setText("<a style=\"color: " + self.label_normal_color + 
+    " text-decoration: none\" href=\"#\">" + self.text + "</a>")
 ```
 When using a QLabel like this we can also use the signal ```linkActivated``` and connect it to a slot.
 ```python
@@ -974,3 +982,6 @@ In this sample the statusBar is used to display messages like ```self.statusBar(
 ```
 
 The above editor was the base for one of my projects called EbookCreator. I have developed the EbookCreator just to be able to write this book. The EbookCreator is also written using Python and PyQt5 and is therefore a good source for you to learn from. The source code is available [here](https://github.com/Artanidos/EbookCreator).  
+
+##Summary
+We have seen how to use all relevant widgets to build desktop applications. We have also seen how a complete desktop application can look like.
