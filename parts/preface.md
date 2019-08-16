@@ -43,7 +43,7 @@ The following typographical conventions are used in this book.
 
 *Italic*
 <blockquote>
-  Used for filenames and paths  
+<p>Used for filenames and paths</p>  
 </blockquote>
 
 ```
@@ -51,7 +51,7 @@ Constant width
 ```
 
 <blockquote>
-  Used for code samples  
+<p>Used for code samples</p>  
 </blockquote>
 
 ##Using Code Examples
