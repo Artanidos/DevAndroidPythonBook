@@ -89,3 +89,6 @@ If you do not have a path to binarycreator you can find it under *Qt/Tools/QtIns
 
 You can start the setup with just a double-click.  
 ![setup](../images/setup.png "setup")
+
+##Summary
+At the end we have also build an installation package which we can send to our customers of can publish on the internet. This package includes all necessary libraries and also Python itself. 
