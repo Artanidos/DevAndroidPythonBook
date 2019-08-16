@@ -1,7 +1,7 @@
 import EbookCreator 1.0
 
 Ebook {
-    name: "Develop Cross Platform apps using Python and PyQt5"
+    name: "Erstelle Cross Platform GUI Applikationen mit Python, Qt und PyQt5"
     language: "en"
     theme: "Epub2"
     creator: "Artanidos"
