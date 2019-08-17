@@ -15,7 +15,7 @@ Qt5 and PyQt5 are available under an open source license so you might use these 
 Even when we are using Qt5 we have got two options to develop applications. 
 First option is QtWidgets which has been introduced to create platform independent desktops applications and QtQuick which uses a declarative way to implement user interfaces using QML (Qt Markup Language). 
 Because at the moment QtQuick lacks of a tree view and a table view implementation I guess it has been primarily developed to satisfy mobile app development. 
-QtQuick has also implemented behaviours and transactions which you normally only see on mobile platforms. 
+QtQuick has also implemented behaviours and transitions which you normally only see on mobile platforms. 
 If you have got design background then the QML approach could be your best choice because you don't really have to write code that much and when you like to write imperative code then QtWidgets might be your way. 
 
 ##Hello World (QtWidgets)
@@ -166,4 +166,4 @@ Rectangle {
 Be aware that you should not use many QQuickViews inside a QWidget window because of performance issues.
 
 ##Summary
-We have seen three approaches to build GUI applications using Qt5. The QWidgets approach is mostly used to create desktop applications. The QML approach is mostly used to create mobile applications and the combination cann be used to create desktop applications where we use QML to render a part of thes desktop experience.
+We have seen three approaches to build GUI applications using Qt5. The QWidgets approach is mostly used to create desktop applications. The QML approach is mostly used to create mobile applications and the combination can be used to create desktop applications where we use QML to render a part of thes desktop experience.

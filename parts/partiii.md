@@ -120,6 +120,8 @@ if __name__ == "__main__":
     win.show()
     sys.exit(app.exec())
 ```
+![basics](../images/basics.png "basics")
+
 ###Layout
 In this sample we have got the window and inside this window we use a simple QWidget as central widget for the purpose to set the layout of this widget to QGridView. A QGridView arranges all widgets in a row and column fashion. The column count will be emerged depending on the usage of the grid. If you are for example adding a widget with ```layout.addWidget(widget, 0, 1)
 ``` then a widget at row 0 and column 1 will be added. This leads to a column count of 2. If you also define a row- and column span to this method like ```layout.addWidget(widget, 0, 1, 1, 4)  
@@ -434,7 +436,7 @@ Keep in mind that it's not a good practise to use multiple message boxes in a ro
 ![savedetails](../images/save_details.png "savedetails")  
 ![warning](../images/warning.png "warning")  
  
-Like we have got an icon in the warning dialog, we can also the the icon using the ```setIcon()``` method.  
+Like we have got an icon in the warning dialog, we can also set the icon using the ```setIcon()``` method.  
 We have got four icons to choose from:
 ```python
 msg.setIcon(QMessageBox.Question)
