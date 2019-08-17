@@ -1,26 +1,35 @@
-#Part II - Basics
+#Teil II - Basis
 
-##Many Different Approaches
+##Viele Unterschiedliche Ansätze
 
-Because of the fact that Python has been introduced in 1991, meanwhile there are a few user interface approaches to develop Python applications.
-There is Tkinter which is a bridge to TK. Tkinter is been delivered with Python. 
-There is Kivy which has got a nice approach using a special pythonic language to declare the user interface. 
-There is BeeWare which compiles Python to Java-ByteCode which then can be deployed on an Android device. 
-There is Enaml Native which act like Pythons answer to React Native and there are a few approaches to bridge to Qt. Qt is pronounced 'Cute'. 
-These approaches are PySide, which bridges to Qt4. 
-There is PyQt which also bridges to Qt4, PySide2 which bridges to Qt5 and last but not least PyQt5 which we are talking about in this book. 
-I am not going to talk about the pros and cons of all these possibilities in this book. Instead I am focusing on solutions. 
-To use PyQt5 is a personal decision after working a few years with Qt5. 
-Qt5 and PyQt5 are available under an open source license so you might use these frameworks for free as long as you plan to create open source programs. If you are going to create commercial software you have to purchase licenses for both frameworks. 
-Even when we are using Qt5 we have got two options to develop applications. 
-First option is QtWidgets which has been introduced to create platform independent desktops applications and QtQuick which uses a declarative way to implement user interfaces using QML (Qt Markup Language). 
-Because at the moment QtQuick lacks of a tree view and a table view implementation I guess it has been primarily developed to satisfy mobile app development. 
-QtQuick has also implemented behaviours and transactions which you normally only see on mobile platforms. 
-If you have got design background then the QML approach could be your best choice because you don't really have to write code that much and when you like to write imperative code then QtWidgets might be your way. 
+Da Python schon seit 1991 existiert, wurden bereits mehrere Frameworks für die GUI-Programmierung in Python erstellt.  
+Da gibt es Tkinter, welches eine Brücke zu TK ist. Tkinter wird standardmässig mit Python ausgeliefert.  
+Dann gibt es noch Kivy, welches eigentlich gute Ansätze, wie zum Beispiel die GUI-Beschreibungssprache kvlang hat, mit der es auf einfache pythonische Weise möglicht ist, das Userinterface zu deklarieren.    
+Dann gibt es noch BeeWare mit dem u.a. Python in Java-Byte-Code compiliert wird, um auf Android ausgeführt werden zu können.  
+Da gibt es auch noch Enaml Native, welches man als Pythons Antwort zu React Native sehen kann und dann gibt es noch ein Paar Möglichkeiten um eine Brücke zu Qt zu schlagen, als da wären, PySide welches eine Brücke zu Qt4 baut, PyQt welches ebenfalls eine Brücke zu Qt4 ist und PyQt5, was eine Brücke zu Qt5 darstellt und um das es hier in diesem Buch geht.  
+
+Ich werde hier nicht über die Vor- und Nachteile der einzelnen Frameworks schreiben, sondern mich voll auf PyQt5 konzentrieren.  
+ 
+PyQt5 zu benutzen war eine persönliche Entscheidung von mir, da ich bereits ein paar Jahre mit Qt5 und C++ gearbeitet habe.  
+
+Qt5 und PyQt5 sind als Open Source Lizenz verfügbar und man kann beide kostenlos nutzen, solange man damit Open Source Software erstellt.  
+Solltest du vorhaben kommerzielle Software zu erstellen, musst du Lizenzen für beide Frameworks erwerben.  
+
+Selbst wenn wir Qt5 nutzen, haben wir zwei Optionen Anwendungen damit zu erstellen.  
+
+Die erste Option ist es eine Anwendung mit QtWidgets zu erstellen, welches den Desktop als Zielplatform hat und QtQuick, welches einen deklarativen Ansatz wählt um Userinterfaces mittels QML(**Q**t **M**arkup **L**anguage) zu beschreiben und eher für mobile Endgeräte konzipiert wurde.  
+Da QtQuick derzeit kein Control für einen TreeView und einen TableView besitzt, würde ich nicht empfehlen damit eine Anwendung für den Desktop zu erstellen, ausser man kann auf diese beiden Controls verzichten.  
+
+Mit QtQuick kann man ausserdem Behaviours und Transitions deklarieren, welches man heutzutage eher auf mobilen Endgeräten antrifft.  
+ 
+Wenn du einen Design Hintergrund hast, ist wahrscheinlich der QML-Ansatz interessanter für dich, da du hier nicht wirklich Code erzeugen musst.  
+Bist du eher der CoderTyp, dann ist evtl. QtWidgets die richtige Wahl für dich.    
+
+Im folgenden zeige ich dir allerdings gleich drei Varianten Qt Anwendungen zu schreiben.
 
 ##Hello World (QtWidgets)
 
-Now I will show you how a very basic QtWidgets app will look like.   
+Zuerst erstellen wir eine sehr simple QtWidget Anwendung, mit der wir die Worte *Hello World* auf dem Bildschirm ausgeben. Im Gegensatz zu dem ersten Beispiel benutzen wir hier die Klasse QMainWindow anstelle von QWidget. QMainWindow hat zusätzlich noch die Möglichkeit ein Menu, eine Toolbar und eine Statusbar zu nutzen.     
 
 *QWidget/Basics/main.py*  
 ```python
@@ -46,13 +55,14 @@ if __name__ == "__main__":
 
 ![hello](../images/hello.png "hello")
 
-The sample is simply self explanatory. We are creating an application object. Instantiate a window. Make the window visible and execute the app main loop.   
-In the window there is just a label widget which will be set as the central widget.   
-In bigger projects it would be better to create a python file for each class so that the class MainWindow will become an own file called *mainwindow.py*.
+Das Beispiel ist fast selbsterklärend. Wir instanziieren das Applikations-Objekt indem wir ihm die Argumentenliste der Anwendung übergeben, erzeugen eine Instanz von MainWindow, unserer Fensterklasse. Machen das Fenster mit Aufruf der Methode *show()* auf dem Bildschirm sichtbar und rufen die Hauptschleife der Applikation auf.  
+In der Init-Methode des Fensters rufen wir zuerst einmal die Init-Methode der VaterKlasse auf, setzen den Titel des Fensters und erzeugen eine Instanz eines Labels, welches hier als zentrales Widget gesetzt wird.  
+QMainWindow hat neben dem Menu, der Menubar und der Statusbar das zentrale Widget, welches den inneren Bereich des Fensters ausfüllt.  
+In grösseren Projekte wäre es sinnvoller jede Klasse in einer eigenen Python-Datei zu speichern. Das macht das Projekt übersichtlicher. Unser Fenster würden wir dann in der Datei *mainwindow.py* speichern.
 
 ##Hello World (QtQuick)
 
-The hello world app for the QtQuick part will be made out of two file. First the main.py where the qml file will be loaded and the main loop will be started and a second file named view.qml where the user interface is been declared.
+Die Hello World Anwendung für QtQuick besteht aus zwei Dateien. Zuerst haben wir da wieder die *main.py* in der wir die Applikation instanziieren und den MainLoop starten und dann haben wir eine zweite Datei mit dem Namen *view.qml* in der wir das Userinterface definieren werden.   
 
 *QtQuick/Basics/main.py*
 ```python
@@ -84,7 +94,7 @@ ApplicationWindow {
     }
 }
 ```
-In order to start the app we have to cd into the Basics directory and start it like this:  
+Um die Anwendung zu starten müssen wir in das Verzeichnis QtQuick/Basics wechseln und die Anwendung wie folgt starten:  
 
 ```console
 user@machine:/path$ python3 main.py
@@ -92,10 +102,10 @@ user@machine:/path$ python3 main.py
 
 ![AltText](../images/qtquick.png "Title")  
 
-This app is similar to the QtWidgets version except the fact that we use a QGuiApplication instead of a QApplication. And also a QQmlApplicationEngine is responsible to load the user interface.
+Diese Anwendung ist ähnlich der QtWidget-Variante bis auf die Tatsache, das wir QGuiApplication anstelle von QApplication benutzen. Und ausserdem nutzen wir QQmlApplicationEngine, um die QML-Datei zu laden.  Des Weiteren deklarieren wir wie bereits gesagt das Userinterface mit Hilfe von QML. Auf QML werde ich in diesem Buch nicht näher eingehen, da es hierfür bereits ausreichend Literatur gibt und es den Rahmen diese Buches sprengen würde.  
 
-##Combining QWidget and QML
-A third possibility is to combine both QWidget and QML using the QQuickView inside a QWidget application.  
+##QWidget und QML Kombinieren
+Eine dritte Möglichkeit, Qt Anwendungen zu schreiben ist die Kombination aus QtWidget und QML in dem man ein QQuickView verwendet, um QML innerhalb einer QtWidget Anwendung zu benutzen.  
 
 *Combo/main.py*
 ```python
@@ -163,7 +173,10 @@ Rectangle {
 ```
 ![Combo](../images/combo.png "Combo")  
 
-Be aware that you should not use many QQuickViews inside a QWidget window because of performance issues.
+Wie bereits gesagt, gehe ich auf die Entwicklung von QML-Anwendungen in diesem Buch nicht näher ein.  
+Die Verwendung von QVBoxLayout wird etwas später in diesem Buch erläutert. In diesem Beispiel wird es benutzt, um ein Label und den Container vertikal anzuordnen.  
+Sei gewarnt nicht mehrere QQuickViews innerhalb eine Anwendung zu verwenden um Performance-Einbrüche zu vermeiden.  
 
-##Summary
-We have seen three approaches to build GUI applications using Qt5. The QWidgets approach is mostly used to create desktop applications. The QML approach is mostly used to create mobile applications and the combination cann be used to create desktop applications where we use QML to render a part of thes desktop experience.
+##Zusammenfassung
+Wir haben drei Möglichkeiten gesehen, um Anwendungen mit Qt5 zu erstellen.  
+Der QWidgets-Ansatz wird meist bei Desktop-Anwendungen genutzt. Der QML-Ansatz wird meist genutzt, um Anwendungen für mobile Geräte zu erstellen. Und die Kombination kann genutzt werden um QML innerhalb von Desktop-Anwendungen darzustellen.

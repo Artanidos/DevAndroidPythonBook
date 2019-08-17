@@ -1,42 +1,42 @@
-# Part III QtWidgets
-## Base Widgets and Layouts
-Now we will use the most used basic widgets in a small desktop application to give you a first overview of widgets and layouts.  
-For more details on each widget I invite you to search on the internet.
-A good starting point is this webpage: [https://doc.qt.io/qt-5/classes.html](https://doc.qt.io/qt-5/classes.html)  
-On this webpage you often see samples which are written in C++, but you might be able to translate them to Python easily.  
-Here are some examples:  
+# Teil III - QtWidgets
+## Widgets und Layouts
+
+Jetzt verwenden wir die am häufigsten genutzten Widgets in einer kleinen Desktop-Anwendung, um dir einen ersten Überblick über Widgets und Layouts zu geben.  
+Für mehr Details zu jedem Widget lade ich dich ein, im Internet zu suchen. Ein guter Startpunkit hierfür ist die folgende Webseite: [https://doc.qt.io/qt-5/classes.html](https://doc.qt.io/qt-5/classes.html)  
+Auf dieser Webweite findest du allerdings nur Beispiele, die in C++ geschrieben sind, aber du wirst sie dir mit meiner Hilfe hier leicht nach Python übersetzen können.  
+Hier ist ein Beispiel:  
 ```cpp
 QPushButton *button = new QPushButton("&Download", this);
 ```  
-Because C++ is strong typed the variable button is declared here as a pointer to QPushButton.
-The "*" indicates that button is a pointer. The new keyword creates a new instance of QPushButton and this is a pointer to the containing window.
-In Python we transform this to:
+Da C++ streng typisiert ist wird hier die Variable button als Zeiger mit dem Typ QPushButton deklariert.  
+Der Stern "*" weist darauf hin, das button ein Zeiger ist. Das Schlüsselwort "new" kreiert eine Instanz des QPushButton and "this" ist ein Zeiger auf das aufrufende Fenster.  
+Nach Python übersetzt sieht es dann so aus:   
 ```python
 button = QPushButton("&Download", self)
 ```
-If you see code like this:
+Wenn du ein Beispiel wie dieses findest,...:
 ```cpp
 findDialog->show();
 ```
-This means findDialog is a pointer to a dialog instance and via the "->" operator the show method is called.
-We translate this to:
+..., dann zeigt es hier wahrscheinlich einen Zeiger auf eine Instanz eines SuchDialoges, dessen Methode show() aufgerufen wird.
+Wir übersetzen da zu:
 ```python
 findDialog.show()
 ```
-Sometimes in C++ objects are declared like this (without the * in front of the variable and the new keyword in front of the class name). Also the operator to call method has changed to "." instead of "->".
+Manchmal deklariert man Variablen in C++ ohne den "*" vor der Variable und ohne das Schlüsselwort "new". Ausserdem ändert sich der Operator zum Aufrufen von Methoden von "->" zu ".".
 ```cpp
 QFileDialog dialog(this);
 dialog.setFileMode(QFileDialog::AnyFile);
 ```
-This means the variable dialog of type QFileDialog has been declared and initialized with "this" (the containing window).
-In Python we will code it like this:
+Das bedeutet, das die Variable dialog mit dem Typ QFileDialog deklariert wurde und mit "this" initialisiert wurde. 
+In Python deklarieren wir das wie folgt:
 ```python
 dialog = QFileDialog(self)
 dialog.setFileMode(QFileDialog.AnyFile)
 ```
-In Python we make no difference between objects and pointers. Also notice that instead of the "::" enum operator in Python we just use a dot "." to access a enumeration field.  
+In Python machen wir keinen Unterschied zwischen Objekten und Zeigern. Beachte ausserdem, das wir in Python anstelle des "::" enum Operators einen "." benutzen, um auf ein Feld zu zugreifen.  
 
-But now it's time for an example.  
+Aber nun ist es Zeit für ein Beispiel.  
 
 *QWidget/BaseWidgets/main.py*
 ```python
@@ -120,32 +120,42 @@ if __name__ == "__main__":
     win.show()
     sys.exit(app.exec())
 ```
+![basics](../images/basics.png "basics")
+
 ###Layout
-In this sample we have got the window and inside this window we use a simple QWidget as central widget for the purpose to set the layout of this widget to QGridView. A QGridView arranges all widgets in a row and column fashion. The column count will be emerged depending on the usage of the grid. If you are for example adding a widget with ```layout.addWidget(widget, 0, 1)
-``` then a widget at row 0 and column 1 will be added. This leads to a column count of 2. If you also define a row- and column span to this method like ```layout.addWidget(widget, 0, 1, 1, 4)  
-``` then the the column count will be set to 5.  
-Inside this QGridLayout we use two other layouts. The QVBoxLayout arranges widgets in a vertical direction and the QHBoxLayout lays out widget horizontally. In the case of the ```hbox
-``` we are using a stretch object to align the buttons to the right side.  
-To set the window width we use this little trick:
+In diesem Beispiel haben wir ein Fenster und innerhalb dieses Fensters haben wir ein simples Widget, welches als zentrales Widget gesetzt wird und lediglich dafür da ist, ein Layout (QGridView) zu beherbergen.  
+Ein QGridView arrangiert all seine Widgets in Zeilen und Spalten.  
+Die Spaltenanzahl ergibt sich aus der Nutzung des Grids.  
+Wenn du zum Beispiel ein Widget wie folgt zum Grid hinzufügst ```layout.addWidget(widget, 0, 1)
+``` dann wird das Widget in der ersten Zeile (0) in der zweiten (1) Spalte hinzugefügt. Das ergibt eine Spaltenanzahl von 2.  
+Wenn du ausserdem eine Zeilen- und Spaltenspanne wie hier nutzt ```layout.addWidget(widget, 0, 1, 1, 4)  
+``` dann ergibt sich daraus eine Spaltenanzahl von 5, da das Widget 4 Spalten umspannt.  
+
+Innerhalb des Grid nutzen wir zwei weitere Layouts. Das QVBoxLayout arrangiert die Widgets in vertikaler Richtung und das QHBoyLayout arrangiert die Widgets in horizontaler Richtung. Im Falle der ```hbox
+``` nutzen wir ein stretch Objekt (.addStretch) um die Buttons auf der rechten Seite auszurichten. Dieses stretch Objekt ist ein unsichtbares Widget, welches den gesamt verfügbaren Platz einnimmt. Wenn wir von einer Spalte ausgehen, die 500 Pixel breit ist und dort zwei Buttons mit jeweils einer Breite von 100 Pixeln enthalten sind, dann wird das stretch Objekt 300 Pixel breit werden.  
+Um die Breite des Fensters zu setzen benutzen wir hier einen kleinen Trick:
 ```
 self.name_edit.setMinimumWidth(200)
 ```
-We are just setting the minimum width of the second column to 200 pixel and all other columns will be rendered in the same size. 
-###Signals and Slots
-Signals and slots are a Qt specific method to create a publisher/subscriber pattern. In our case the QPushButton fires a signal when the button is clicked and the containing widget can connect this signal to a slot. In this case the method okClicked is the slot which will be called each time the button fires a clicked Signal. The signal will be connected with the following syntax:
+Wir setzen einfach die Mindestbreite eines Widgets in der zweiten Spalte auf 200 Pixel und alle Widgets in der zweiten Spalten verbreitern sich auf 200. 
+
+###Signals und Slots
+Mit Signals und Slots wird in Qt ein Publisher-Subscriber-Pattern kreiert. In unserem Fall feuert der QPushButton, wenn er angeklickt wird, ein "clicked" Signal. Wenn wiederum das Fenster dieses Signal mit einem Slot, in diesem Fall mit der Methode okClicked verbunden hat, dann wird diese Methode jedes mal aufgerufen, wenn der Button angekilickt wird.  
+Das Signal wird mit folgendem Code verknüpft:  
 ```python
 ok_button.clicked.connect(self.okClicked)
 ```
-If you see C++ samples they might look like this:
+Wenn du mal ein C++ Beipiele zu diesem Thema finden solltest, dann sieht dieses etwas komplizierter aus:  
 ```cpp
-connect(m_button, SIGNAL (released()), this, SLOT (handleButton()));
+connect(m_button, SIGNAL (clicked()), this, SLOT (handleButton()));
 ```
-And they will be translated like this:
+Und wird wie folgt in Python übersetzt:
 ```python
-m_button.released.connect(self.handleButton)
+m_button.clicked.connect(self.handleButton)
 ```
+Dieses Beispiel ist einer der Gründe, war es mit Python viel schneller geht ein Programm zu schreiben als mit C++.
 ## ListView
-Some widgets like the QListView are working with a data model. Here is an example.
+Einige Widgets wie der QListView arbeiten mit einem Datenmodell. Hier ist ein Beispiel.
 
 *QWidget/ListView/main.py*
 ```python
@@ -194,11 +204,10 @@ if __name__ == "__main__":
 ```
 ![listview](../images/listview.png "listview")
 
-In this example we use the QStandardItemModel with QStandardItem's for each list item. Just simple.
-In the next chapter we will create our own data model.
-## TreeWidget
-For this tree view example we use our own data model which extends the QAbstractItemModel.
-
+In diesem Beispiel nutzen wir das QStandardItemModel mit QStandardItem's für jeden Listeneintrag. Ganz einfach oder!  
+Im nächsten Abschnitt werden wir ein eigenes Datenmodell verwenden.  
+## TreeView
+In diesem TreeView Beipiel nutzen wir ein eigenes Datenmodell welches von QAbstractItemModel erbt.
 
 *QWidget/TreeView/treemodel.py*
 ```python
@@ -300,7 +309,7 @@ class TreeNode(object):
         self._columncount = max(in_child.columnCount(), self._columncount)
 ```  
 
-When subclassing QAbstractItemModel, at the very least you must implement index(), parent(), rowCount(), columnCount(), and data(). These functions are used in all read-only models, and form the basis of editable models.
+Wenn man von QAbstractItemModel erbt, bzw. es erweitert, dann muss man auf jeden Fall folgende Methoden implementieren:  index(), parent(), rowCount(), columnCount(), and data(). Diese Methoden werden in allen read-only Modellen benutzt. Sie formen die Basis für editierbare Modelle.
 
 *QWidget/TreeView/main.py*
 ```python
@@ -335,12 +344,15 @@ if __name__ == "__main__":
 ```
 
 ![treeview](../images/treeview.png "treeview")  
-This is also a very basic example but it's a good start to see how to use treeviews at all.
+Dies ist auch ein sehr simples Beispiel aber ein guter Startpunkt um ein Treeview zu nutzen.  
 ## Dialog
-If you prefer to create all your windows and dialogs using Qt-Creator which contains a user interface editor, then you can use the following technique. Open Qt-Creator and edit a dialog in design mode.
+Wenn du es bevorzugst die Fenster und Dialoge mit einem Designtool zu entwerfen, dann kannst du den QtCreator nutzen, welche Bestandteil von Qt ist.
+Du kannst Qt und den QtCreator [hier](https://www.qt.io/download) runterladen.  
+
+Starte den QtCreator und erstelle einen Dialog im Design-Mode. 
 ![qtcreator](../images/qtcreator.png "qtcreator")  
 
-The created dialog will then be saved in a "*.ui" file an can be used in our code as follows.
+Speicher den erstellten Dialog wird als *dialog.ui*. Im nachfolgenden Beipiel kannst du sehen, wie man den Dialog mit PyQt5 nutzen kann.  
 ```python
 import sys
 from PyQt5.QtWidgets import QApplication
@@ -361,8 +373,9 @@ if __name__ == "__main__":
     sys.exit(app.exec_())   
 ```
 ![dialog_ui](../images/dialog_ui.png "dialog_ui")
+Die Funktion loadUiType lädt den Dialog und liefert das Tupel (UIClass, QtBaseClass) zurück, welche wir nur noch initialisieren müssen.
 ## MessageDialog
-Here is a sample to show some possibilities to use a messagebox.  
+Hier ist ein Beispiel um ein paar Möglichkeiten aufzuzeigen, um eine MessageBox zu nutzen.  
 
 *QWidget/MessageDialog/main.py*
 ```python
@@ -427,15 +440,16 @@ if __name__ == "__main__":
     win.show()
     sys.exit(app.exec())
 ```
-Keep in mind that it's not a good practise to use multiple message boxes in a row.  
+Behalte bitte in Erinnerung, dass man nicht mehrere MessageBoxen in Folge nutzen sollte.  
 
 ![simplemsg](../images/simple_msg.png "simplemsg")  
 ![save](../images/save.png "save")  
 ![savedetails](../images/save_details.png "savedetails")  
 ![warning](../images/warning.png "warning")  
  
-Like we have got an icon in the warning dialog, we can also the the icon using the ```setIcon()``` method.  
-We have got four icons to choose from:
+Wie in dem Beispiel mit dem Warning Dialog können wir das Icon auch mit der Methode ```setIcon()
+``` ändern.  
+Wir haben vier Icons zu auswählen:  
 ```python
 msg.setIcon(QMessageBox.Question)
 msg.setIcon(QMessageBox.Information)
@@ -443,11 +457,12 @@ msg.setIcon(QMessageBox.Warning)
 msg.setIcon(QMessageBox.Critical)
 ```
 
-##User Defined Widgets
-Sometimes you are missing a specific widget and if you are not able to download it somewhere, then you have to create it on your own.  
-In the following example I will introduce a DockWidget, a ScrollArea and of course a user defined widget called Expander.  
-I remember that I saw an expander in an email client on Windows for the first time.  
-The usage is very simple. Just click on the rectangle an the content will expand. The content can be a list of menuitems, a text edit, a listbox or whatever.  
+##Nutzer Definierte Widgets
+Manchmal vermissen wir ein bestimmtes Widget und wenn wir es nirgendwo runterladen können, dann müssen wir es selber entwerfen.  
+Im nachfolgenden Beispiel werden wir ein DockWidget, eine ScrollArea 
+und natürlich ein eigenes Widget namens Expander kennenlernen.  
+Ich erinnere mich daran, den Expander das erste Mal in einer Email-Anwendung unter Windows gesehen zu haben. Leider wurde dieses Widget nicht in Qt integriert.
+Die Nutzung des Expanders ist simpel. Klicke einfach in den Expander und der eigentliche Inhalt wird in einer Animation vergrössert und somit angezeigt. Der Inhalt kann eine Liste von Menueinträgen, ein Texteditor, eine Listbox oder was auch immer sein.
 
 *QWidget/UserDefined/main.py*
 ```python
@@ -550,10 +565,11 @@ if __name__ == "__main__":
     win.show()
     sys.exit(app.exec())
 ```
-The DockWidget can be placed anywhere on the window depending on the AllowedAreas.  
-In this sample the DockWidget can be placed on the left and on the right side.  
-
-The ScrollArea can contain widgets that are larger than the window itself. If its not possible to display the whole widget, then a scroll bar will be displayed which enables the user to scroll the content. In our sample the scroll bars will only be displayed if there is something to scroll (Qt.ScrollAsNeeded). If the widget fits into the scroll area no scroll bars will be displayed.  
+Das DockWidget kann der Nutzer überall dort hinbewegen, wo es erlaubt ist. In unserem Beispiel ist es eingeschränkt auf den linken und den rechten Rand des Fensters.
+```python
+self.navigationdock.setAllowedAreas(Qt.LeftDockWidgetArea | Qt.RightDockWidgetArea)
+```
+Eine ScrollArea kann Widgets aufnehmen, die grösser als der zur Verfügung stehenede Bereich im Fenster ist. Wenn es nicht möglich ist, das komplette Widget anzuzeigen, dann wird jeweils eine Scrollbar angezeigt, mit der der Nutzer in der Lage ist, das ganze Widget zu sichten. In unserem Beispiel werden die Scrollbars nur angezeigt, wenn etwas zu scrollen gibt (Qt.ScrollAsNeeded). Wenn das Widget in die ScrollArea reinpasst, werden keine ScrollBars angezeigt.
 
 *QWidget/UserDefined/expander.py*
 ```python
@@ -727,18 +743,23 @@ class Expander(QWidget):
 	       "; text-decoration: none;\" href=\"#\">" + self.text + "</a>")
         QWidget.leaveEvent(self, event)
 ```
-For the expander we are using some tricks.  
-First of all we are using the QLabel as a hyperlink control setting the text to mimic a html anchor.
+![expander](../images/expander.png "expander")
+Für den Expander nutzen wir ein paar Tricks.
+Zu allererst nutzen wir einen Label als Hyperlink.
 ```python
 self.hyper.setText("<a style=\"color: " + self.label_normal_color + 
     " text-decoration: none\" href=\"#\">" + self.text + "</a>")
 ```
-When using a QLabel like this we can also use the signal ```linkActivated``` and connect it to a slot.
+Wenn wir einen QLabel wie hier benutzen, dann können wir auch auf das Signal linkActivated zugreifen ```linkActivated
+``` und ihn mit einem Slot verbinden.
 ```python
 self.hyper.linkActivated.connect(self.buttonClicked)
 ```
-The next trick is the use of an animation (QParallelAnimationGroup, QPropertyAnimation) so that the transition when expanding and collapsing the widget looks nice. In our case we are animating the maximumHeight and the background color of the widget.  
-To be able to animate the color I had to declare it as a property.
+Der nächste Trick ist die Nutzung einer Animation (QParallelAnimationGroup, QPropertyAnimation) mit der wir eine Transition erzeugen können, wenn der Expander erweitert oder verkleinert wird, damit das Ganze recht hübsch aussieht. In unserem Fall animieren wir die ```maximumHeight
+``` und die ```color
+``` des Widgets.  
+Um die Farbe ```color
+``` animieren zu können, musste ich ein Property deklarieren.
 ```python
 @pyqtProperty('QColor')
 def color(self):
@@ -750,16 +771,16 @@ def color(self, color):
     pal.setColor(QPalette.Background, QColor(color))
     self.setPalette(pal)
 ```
-
-Another nice trick is the use of an SVG (scalable vector graphic) image as an icon.  
-For this trick we are opening an svg image, replacing a specific color with the actual hilite color and then we are creating a pixmap from the svg to use a icon. I have created the svg icon using InkScape. There I have set the color to #ff00ff and in the createIcon method I just replace this color string with the hilite color name. Just to be clear. SVG is a xml based image so we can edit the colors as text.
+Ein anderer Trick ist die Nutzung einer SVG (**S**calable **V**ector **G**raphic) Grafik für das Icon.
+Für diesen Trick öffnen wir die Datei mit dem SVG, ersetzen eine bestimmte Farbe im Text mit der aktuellen Hilite-Farbe (SVG liegt im Textformat vor) und erstellen eine Pixmap auf Basis der SVG-Grafik.  
+Ich habe die SVG Grafiken mit InkScape erstellt und eine bestimmte Farbe auf #ff00ff gesetzt, damit sich sie einfach wiederfinden und ersetzen kann.  
+Da SVG auf XML basiert kann man den Text einfach ersetzen.
 ```python
 data.replace("#ff00ff", hilite_color)
 ```
 
-
 ##MarkownEditor
-At the end of this chapter we will create a complex application to fill the gaps with the missing widgets like Menu, MenuItem, StatusBar, Action, Splitter, FileDialog, Settings and WebEngineView.
+Am Ende die Kapitels werden wir eine etwas komplexere Anwendung erstellen um ein paar noch nicht benutzte Widgets wie das Menu, MenuItem, StatusBar, Action, Splitter, FileDialog, Settings und den WebEngineView in Aktion zu sehen.
 
 ```python
 import sys
@@ -961,27 +982,34 @@ if __name__ == "__main__":
     sys.exit(app.exec_())
 ```
 ![markdown](../images/markdown.png "markdown")  
-The WebEngineView is a full featured html browser widget and is used here in this sample to render the html which will be generated from the markdown source.  
-The module markdown2 is used to transform the markdown into valid xhtml.  You can download it using pip.  
+Der WebEngineView ist ein voll fuktionsfähiger HTML-Browser-Widget und wird hier benutzt, um das aus dem Markdown erzeugte HTML darzustellen.
+
+Das Modul markdown2 wird hier benutzt um markdown in HTML zu verwandeln. Du kannst es wie folgt installieren:
 ```console
 user@machine:/path$ pip install markdown2 
 ```
-The writeSetting method saves the geometry (position and size of the window) and the readSettings restores these settings.  
+Die Methode ```writeSetting
+```wird verwendet um die Geometrie des Fensters in einer Datei zu speichern und mit der Methode ```readSettings
+``` werden die Werte wieder verwendet um die Grösse und die letzte Position des Fensters wieder zu benutzen.  
 
-The textChanged method will be triggered every time the user enters text into the text edit. In the EbookCreator I had to change this behaviour into a thread call for performance reasons.  
+Die Methode ```textChanged
+``` wird jedes mal aufgerufen, wenn der Nutzer den Text im Editor ändert.
+In meinem Programm EbookCreator, das auf diesem Beispiel basiert, musste ich das Verhalten aus Gründen der Performance etwas anpassen. Der Code wird dort in einem Thread ausgeführt.  
 
-The actions like new_act, open_act and save_act are used twice here. First we use these actions in the pull down menu and also in the toolbar.  
+Die Aktionen wie new_act, open_act und save_act werden hier doppelt genutzt. Einmal im Menu und das andere Mal in der Toolbar.
 
-When you define a menu action then the shortcut letter is marked with the "&". Like the letter "S" in the "&Save" action. Be aware not to use one single letter twice in the same menu.  
+Wenn du eine Aktion für ein Menu definierst, dann markierst du den Schnellzugriff mit "&". Zum Beispiel das "S" in der Action "&Save".  
+Diese Buchstaben dürfen nur einmal unter einem Menu benutzt werden. Wenn du alse "&Save" und "&Save as" nutzt, dann wird das SaveAs niemals mit einem Schnellzugriff aufgerufen werden können.   
 
-The QTextEdit widget can be used to edit plain text and also rich text. Therefore we use ```self.text_edit.setPlainText(text)
-``` to set the content.  
+Das Widget QTextEdit kann mit einfachem Text und mit RichText betrieben werden. Hierfür nutzen wir die Methode ```self.text_edit.setPlainText(text)
+``` um den Inhalt zu setzen.  
 
-In this sample the statusBar is used to display messages like ```self.statusBar().showMessage("File loaded", 2000)
-``` and also to display infos for some menuitems ```exit_act.setStatusTip("Exit the application")
+In unserem Beispiel wird die Statusbar benutzt um Nachrichten anzuzeigen
+```self.statusBar().showMessage("File loaded", 2000)
+``` und um Infos für einige Menuitems ```exit_act.setStatusTip("Exit the application") anzuzeigen.
 ```
 
-The above editor was the base for one of my projects called EbookCreator. I have developed the EbookCreator just to be able to write this book. The EbookCreator is also written using Python and PyQt5 and is therefore a good source for you to learn from. The source code is available [here](https://github.com/Artanidos/EbookCreator).  
+Der Editor aus obigem Beispiel war die Basis für meine Anwendung EbookCreator, mit der ich dieses Buch geschrieben habe. Der EbookCreator ist auch in Python und PyQt5 geschrieben und kann dir als  Inspiration helfen. Der Sourcecode ist [hier](https://github.com/Artanidos/EbookCreator) verfügbar.  
 
-##Summary
-We have seen how to use all relevant widgets to build desktop applications. We have also seen how a complete desktop application can look like.
+##Zusammenfassung
+Wir haben gesehen, wie man alle relevanten Widgets in einer Desktop-Anwendung benutzt. Wir haben gesehen, wie eine komplette Anwendung, geschrieben in Python, aussehen kann. 

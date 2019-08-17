@@ -4,7 +4,7 @@ Ich hoffe, das dir dieses Buch helfen konnte, ein paar neue Möglichkeiten der S
 Ich wünsche dir viel Erfolg auf deinem weiteren Weg.   
 Wenn du das Buch magst dann würde ich mich sehr freuen, wenn du eine kurze Rezession hinterlassen könntest, damit andere Menschen auch dieses Buch finden können.    
 
-# Über den Author
+# Über den Autor
 Olaf Japp, ist 1963 in Hamburg, Deutschland geboren und arbeitet schon seit über 30 Jahren als Softwareentwickler. Er hat mit C angefangen und dann noch Assembler gelernt, um die Programme zu beschleunigen. Nachdem er so gängige Programmiersprachen wie Java, C# und Objective-C erlernt hat, kam er dann schließlich 2016 zu C/C++ zurück und startete Applikationen mit Qt5 zu erstellen.  
 Qt5 war für ihn das ideale Framework um seine Fähigkeiten, die er in seinem Studium 2013 in "Human Computer Interaction Design" gelernt hatte, umzusetzen.  
 Nachdem er zum ersten Mal mit Python in Form von Plugins für seine Anwendungen in Berührung kam, dauerte es noch weitere zwei Jahre, bis er Python so richtig kennen lernte.  

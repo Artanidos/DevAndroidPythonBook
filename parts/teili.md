@@ -3,12 +3,12 @@
 ##Installation
 
 Wir werden nun anfangen und alle nötigen Programme installieren, um in der Lage zu sein, die gewünschte Software zu schreiben und sie auszuprobieren.  
-Um Anwendungen auch auf anderen Platformen installieren zu können, werden wir zusätzliche Software im Kapitel über die Softwarebereitstellung, später in diesem Buch, installieren.  
+Um Anwendungen auch auf anderen Platformen installieren zu können, werden wir zusätzliche Software im Kapitel über die Installation, später in diesem Buch, installieren.  
 
 Ich gehe davon aus, das du bereits Python3 und Pip auf deinem Rechner installiert hast. Wenn nicht, findest du alle notwendigen Informationen auf der [Python](https://python.org) Webseite. Wir benötigen Python in der Version 3.7.   
 Ich gehe ausserdem davon aus, dass du in der Lage bist Pakete mittels Pip zu installieren.  
 
-Zuerst werden wir [PyQt5](https://www.riverbankcomputing.com/software/pyqt/intro) welches zusammen mit Qt5 kommt installieren, damit wir Desktop-Applikationen entwickeln können. 
+Zuerst werden wir [PyQt5](https://www.riverbankcomputing.com/software/pyqt/intro) welches zusammen mit Qt5 kommt installieren, damit wir Desktop-GUI-Applikationen entwickeln können. 
 
 ```console
 user@machine:/path$ pip3 install PyQt5
@@ -28,19 +28,19 @@ Im Folgenden werden wir ein paar Erweiterungen installieren, um unsere erste Anw
 
 ##Entwicklungsumgebung Aufsetzen
 
-Nachdem wir nun VS-Code installiert haben, installieren wir noch nachfolgende Erweiterungen wie diese...   
+Nachdem wir nun VS-Code installiert haben, installieren wir noch nachfolgende Erweiterungen.   
 
 ###Python
 
-Python ist eine Erweiterung um Syntax farblich hervorzuheben, Python-Code zu debuggen und enthält einen Linter.  
-Manchmal zeigt es sogar die korrekte Intellisense.  
+Python ist eine Erweiterung um Syntax farblich hervorzuheben, Python-Code zu debuggen und es enthält einen Linter.  
+Manchmal zeigt es sogar die korrekte Intellisense an. Da ist wohl noch etwas Feinschliff an der Erweiterung zu machen.  
 ![AltText](../images/python.png "Title")
 
 ###Coderunner
 
 Mit Coderunner bist du in der Lage, deine Anwendung mit nur einem Klick zu starten.     
 ![AltText](../images/coderunner.png "Title")  
-Du must lediglich den "Play" Knopf drücken.  
+Du must lediglich den "Play" Knopf klicken.  
 ![AltText](../images/runner.png "Title")
 
 ###QML
@@ -52,9 +52,11 @@ QML ist nützlich um die Syntax für QML-Dateien einzufärben.
 
 Du kannst die Settings mit einem Klick auf das Icon mit dem Zahnrad öffnen.     
 ![AltText](../images/settings.png "Title")   
-Und dann klickst du **"{}"** auf der oberen rechten Seite des Bildschirms um die Settings als json Datei zu öffnen.     
+Und dann klickst du **"{}"** auf der oberen rechten Seite des Bildschirms um die Settings als JSON-Datei zu öffnen.     
 ![AltText](../images/json.png "Title")  
 Hier sind ein paar nützliche Einstellungen, welche ich in die *settings.json* eingefügt habe.  
+Das colorTheme ist natürlich Geschackssache.  
+Die Einstellung vom CoderRunner führt Python mit der *main.py* aus, egal welche Python-Datei gerade im Editor offen ist. Das bedingt natürlich, dass das Projekt eine Datei mit dem Namen *main.py* besitzt und das dies die Startdatei ist.
 
 <div class="codehilite"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;workbench.colorTheme&quot;</span><span class="p">:</span> <span class="s2">&quot;Visual Studio Dark&quot;</span><span class="p">,</span>
@@ -69,7 +71,8 @@ Hier sind ein paar nützliche Einstellungen, welche ich in die *settings.json* e
 
 ##Erste Anwendung
 
-Wir schreiben nun eine simple Anwendung um unsere Umgebung einmal auszuprobieren.    
+Wir schreiben nun eine simple Anwendung um unsere Umgebung einmal auszuprobieren.  
+Ich gehe hier nicht weiter ins Detail, versuche aber später im Buch auf die Einzelheiten einzugehen.   
 
 *basic.py*
 ```python
@@ -92,9 +95,9 @@ user@machine:/path$ python3 basic.py
 
 ![AltText](../images/simple.png "Title")  
   
-In diesem Beispiel instanziieren wir eine Application, zusätzlich noch ein Widget, setzen den Titel des Fensters, machen das Fenster sichtbar und starten den MainLoop.  
-Im MainLoop wird in einer Schleife auf Ereignisse wie Mausklicks, Tastaturanschläge abgefragt und sie dann dem Fenster zur Auswertung übergeben.  In diesem Fall wird das Fenster lediglich auf Veränderung der Fenstergrösse, auf das Verschieben des Fensters und das Schliessen des Fensters reagieren, sollten wir auf den grünen Schliessen-Knopf klicken. Hierbei wird dann die MainLoop verlassen und die Anwendung beendet.   
+In diesem Beispiel instanziieren wir eine Application, zusätzlich noch ein Widget, welches hier als Fenster dient,setzen die Grösse des Fensters, setzen den Titel des Fensters, machen das Fenster sichtbar und starten den MainLoop.  
+Im MainLoop wird in einer Schleife auf Ereignisse wie Mausklicks, Tastatureingabe abgefragt und sie dann dem Fenster zur Auswertung übergeben.  In diesem Fall wird das Fenster lediglich auf Veränderung der Fenstergrösse, auf das Verschieben des Fensters und das Schliessen des Fensters reagieren, sollten wir auf den grünen Schliessen-Knopf, recht oben in der Ecke, klicken. Hierbei wird dann die MainLoop verlassen und die Anwendung beendet.   
 
 ##Zusammenfassung
 
-Nachdem wir die Entwicklungsumgebung aufgebaut haben, konnten wir die erste Qt Anwendung erstellen und ausführen. 
+Nachdem wir die Entwicklungsumgebung aufgebaut haben, konnten wir die erste PyQt Anwendung erstellen und ausführen. 

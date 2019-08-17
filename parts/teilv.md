@@ -1,4 +1,4 @@
-#Deploying to Linux
+#Teil V - Installation auf Linux
 On Linux, Windows and MacOS I prefer to use another tool called **PyInstaller** because it resolves all dependencies automatically.  
 To create a setup program I prefer to use the **QtInstallerFramework** delivered with Qt, because it is also cross platform and free to use.
 
@@ -90,5 +90,5 @@ If you do not have a path to binarycreator you can find it under *Qt/Tools/QtIns
 You can start the setup with just a double-click.  
 ![setup](../images/setup.png "setup")
 
-##Summary
+##Zusammenfassung
 At the end we have also build an installation package which we can send to our customers of can publish on the internet. This package includes all necessary libraries and also Python itself. 

@@ -1,4 +1,4 @@
-#Deploying to Android
+#Teil IV - Installation auf Android
 
 Now we are going to build an APK (**A**ndroid **P**ac**k**age).
 Therefore we first have to install a few other components. 
@@ -314,7 +314,7 @@ Also copy the APK path which will be displayed after the build process has finis
 
 I have put the whole command into the *deploy.sh* file to use it later.
 
-##Summary
+##Zusammenfassung
 
 Hopefully we have deployed the demo app to our device. 
 To find out how to build and deploy to Android took me several days.   
