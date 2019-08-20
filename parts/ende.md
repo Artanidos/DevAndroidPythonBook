@@ -17,3 +17,7 @@ Er hat ausserdem bereits ein Buch über sein Leben und Tantra geschrieben.
 Seit 2016 lebt er in seinem Wohnmobil in der Mitte von Berlin und er spielt Percussion auf der Strasse.  
 Um Software zu schreiben geht er in eine öffentliche Bibliothek, weil er dort kostenlos Strom und WLAN bekommt.
 Er lebt nun ein sehr einfaches Leben.
+
+#Impressum
+Olaf Japp  
+japp.olaf@gmail.com
