@@ -3,38 +3,39 @@
 
 Jetzt verwenden wir die am häufigsten genutzten Widgets in einer kleinen Desktop-Anwendung, um dir einen ersten Überblick über Widgets und Layouts zu geben.  
 Für mehr Details zu jedem Widget lade ich dich ein, im Internet zu suchen. Ein guter Startpunkit hierfür ist die folgende Webseite: [https://doc.qt.io/qt-5/classes.html](https://doc.qt.io/qt-5/classes.html)  
-Auf dieser Webweite findest du allerdings nur Beispiele, die in C++ geschrieben sind, aber du wirst sie dir mit meiner Hilfe hier leicht nach Python übersetzen können.  
+Auf dieser Webweite findest du allerdings nur Beispiele, die in C++ geschrieben sind, aber du wirst sie dir, mit meiner Hilfe hier, leicht nach Python übersetzen können.  
 Hier ist ein Beispiel:  
 ```cpp
 QPushButton *button = new QPushButton("&Download", this);
 ```  
 Da C++ streng typisiert ist wird hier die Variable button als Zeiger mit dem Typ QPushButton deklariert.  
-Der Stern "*" weist darauf hin, das button ein Zeiger ist. Das Schlüsselwort "new" kreiert eine Instanz des QPushButton and "this" ist ein Zeiger auf das aufrufende Fenster.  
+Der Stern "*" weist darauf hin, das ```button
+``` ein Zeiger ist. Das Schlüsselwort "new" kreiert eine Instanz der Klasse QPushButton und "this" ist ein Zeiger auf das aufrufende Fenster.  
 Nach Python übersetzt sieht es dann so aus:   
 ```python
 button = QPushButton("&Download", self)
 ```
-Wenn du ein Beispiel wie dieses findest,...:
+Wenn du ein Beispiel wie dieses findest,...
 ```cpp
 findDialog->show();
 ```
 ..., dann zeigt es hier wahrscheinlich einen Zeiger auf eine Instanz eines SuchDialoges, dessen Methode show() aufgerufen wird.
-Wir übersetzen da zu:
+Wir übersetzen das zu:
 ```python
 findDialog.show()
 ```
-Manchmal deklariert man Variablen in C++ ohne den "*" vor der Variable und ohne das Schlüsselwort "new". Ausserdem ändert sich der Operator zum Aufrufen von Methoden von "->" zu ".".
+Manchmal deklariert man Variablen in C++ auch statisch ohne den "*" vor der Variable und ohne das Schlüsselwort "new". Ausserdem ändert sich der Operator zum Aufrufen von Methoden von "->" zu ".".
 ```cpp
 QFileDialog dialog(this);
 dialog.setFileMode(QFileDialog::AnyFile);
 ```
-Das bedeutet, das die Variable dialog mit dem Typ QFileDialog deklariert wurde und mit "this" initialisiert wurde. 
+Das bedeutet, das die Variable dialog mit dem Typ QFileDialog deklariert und mit "this" initialisiert wurde. 
 In Python deklarieren wir das wie folgt:
 ```python
 dialog = QFileDialog(self)
 dialog.setFileMode(QFileDialog.AnyFile)
 ```
-In Python machen wir keinen Unterschied zwischen Objekten und Zeigern. Beachte ausserdem, das wir in Python anstelle des "::" enum Operators einen "." benutzen, um auf ein Feld zu zugreifen.  
+In Python arbeiten wir hier immer nur mit Zeigern, wenn wir eine KLasse instanziieren. Beachte ausserdem, das wir in Python anstelle des "::" enum Operators einen "." benutzen, um auf ein Feld zu zugreifen.  
 
 Aber nun ist es Zeit für ein Beispiel.  
 
@@ -127,17 +128,27 @@ In diesem Beispiel haben wir ein Fenster und innerhalb dieses Fensters haben wir
 Ein QGridView arrangiert all seine Widgets in Zeilen und Spalten.  
 Die Spaltenanzahl ergibt sich aus der Nutzung des Grids.  
 Wenn du zum Beispiel ein Widget wie folgt zum Grid hinzufügst ```layout.addWidget(widget, 0, 1)
-``` dann wird das Widget in der ersten Zeile (0) in der zweiten (1) Spalte hinzugefügt. Das ergibt eine Spaltenanzahl von 2.  
+``` dann wird das Widget in der ersten Zeile (0) in der zweiten (1) Spalte hinzugefügt. Das ergibt eine Spaltenanzahl von 2. 
+
+| Spalte 0 | Spalte 1 |
+| --- | --- |
+|     | Widget |
+ 
 Wenn du ausserdem eine Zeilen- und Spaltenspanne wie hier nutzt ```layout.addWidget(widget, 0, 1, 1, 4)  
 ``` dann ergibt sich daraus eine Spaltenanzahl von 5, da das Widget 4 Spalten umspannt.  
+  
+| Spalte 0 | Spalte 1, 2, 3 und 4 |
+| --- | --- |
+|     | Widget |
 
-Innerhalb des Grid nutzen wir zwei weitere Layouts. Das QVBoxLayout arrangiert die Widgets in vertikaler Richtung und das QHBoyLayout arrangiert die Widgets in horizontaler Richtung. Im Falle der ```hbox
+Innerhalb des Grid nutzen wir zwei weitere Layouts. Das QVBoxLayout, welches seine Widgets vertikal arrangiert und das QHBoyLayout, welches seine Widgets horizontal arrangiert. Im Falle der ```hbox
 ``` nutzen wir ein stretch Objekt (.addStretch) um die Buttons auf der rechten Seite auszurichten. Dieses stretch Objekt ist ein unsichtbares Widget, welches den gesamt verfügbaren Platz einnimmt. Wenn wir von einer Spalte ausgehen, die 500 Pixel breit ist und dort zwei Buttons mit jeweils einer Breite von 100 Pixeln enthalten sind, dann wird das stretch Objekt 300 Pixel breit werden.  
+
 Um die Breite des Fensters zu setzen benutzen wir hier einen kleinen Trick:
 ```
 self.name_edit.setMinimumWidth(200)
 ```
-Wir setzen einfach die Mindestbreite eines Widgets in der zweiten Spalte auf 200 Pixel und alle Widgets in der zweiten Spalten verbreitern sich auf 200. 
+Wir setzen einfach die Mindestbreite eines der Widgets in der zweiten Spalte auf 200 Pixel und alle Widgets in der zweiten Spalten verbreitern sich auf 200. 
 
 ###Signals und Slots
 Mit Signals und Slots wird in Qt ein Publisher-Subscriber-Pattern kreiert. In unserem Fall feuert der QPushButton, wenn er angeklickt wird, ein "clicked" Signal. Wenn wiederum das Fenster dieses Signal mit einem Slot, in diesem Fall mit der Methode okClicked verbunden hat, dann wird diese Methode jedes mal aufgerufen, wenn der Button angekilickt wird.  
@@ -145,15 +156,19 @@ Das Signal wird mit folgendem Code verknüpft:
 ```python
 ok_button.clicked.connect(self.okClicked)
 ```
-Wenn du mal ein C++ Beipiele zu diesem Thema finden solltest, dann sieht dieses etwas komplizierter aus:  
+Wenn du mal ein C++ Beipiel zu diesem Thema finden solltest, dann sieht dieses etwas komplizierter aus:  
 ```cpp
 connect(m_button, SIGNAL (clicked()), this, SLOT (handleButton()));
+```  
+Es kann aber auch, seit Qt5, wie folgt aussehen.
+```cpp
+connect(m_button, &Sender::clicked, this, &Receiver::okClicked);
 ```
 Und wird wie folgt in Python übersetzt:
 ```python
 m_button.clicked.connect(self.handleButton)
 ```
-Dieses Beispiel ist einer der Gründe, war es mit Python viel schneller geht ein Programm zu schreiben als mit C++.
+Dieses Beispiel ist einer der Gründe, warum es mit Python viel schneller geht ein Programm zu schreiben als mit C++.
 ## ListView
 Einige Widgets wie der QListView arbeiten mit einem Datenmodell. Hier ist ein Beispiel.
 
@@ -205,7 +220,11 @@ if __name__ == "__main__":
 ![listview](../images/listview.png "listview")
 
 In diesem Beispiel nutzen wir das QStandardItemModel mit QStandardItem's für jeden Listeneintrag. Ganz einfach oder!  
-Im nächsten Abschnitt werden wir ein eigenes Datenmodell verwenden.  
+Änderungen im Model können wir abfangen, in dem wir das Signal ```itemChanged
+```mit einem Slot verbinden. Somit wird die Methode ```onItemChanged
+```jedes Mal aufgerufen, wenn der Benutzer einen Haken in der Checkbox eines ListItems setzt oder löscht.  
+Im nächsten Abschnitt werden wir ein eigenes Datenmodell verwenden.    
+
 ## TreeView
 In diesem TreeView Beipiel nutzen wir ein eigenes Datenmodell welches von QAbstractItemModel erbt.
 
@@ -308,8 +327,15 @@ class TreeNode(object):
         self._children.append(in_child)
         self._columncount = max(in_child.columnCount(), self._columncount)
 ```  
+Wenn man von QAbstractItemModel erbt, bzw. es erweitert, dann muss man auf jeden Fall folgende Methoden implementieren:  
 
-Wenn man von QAbstractItemModel erbt, bzw. es erweitert, dann muss man auf jeden Fall folgende Methoden implementieren:  index(), parent(), rowCount(), columnCount(), and data(). Diese Methoden werden in allen read-only Modellen benutzt. Sie formen die Basis für editierbare Modelle.
+- index() - Liefert einen Index auf einen Eintrag anhand der Zeile, Spalte und des Parent.
+- parent() - Liefert den Parent des Items
+- rowCount() - Liefert die Anzahl der Zeilen
+- columnCount() - Liefert die Anzahl der Spalten
+- data() - Liefert in unserem Beispiel lediglich den Dateneintrag 
+
+Diese Methoden werden in allen read-only Modellen benutzt. Sie formen die Basis für editierbare Modelle.
 
 *QWidget/TreeView/main.py*
 ```python
@@ -344,36 +370,8 @@ if __name__ == "__main__":
 ```
 
 ![treeview](../images/treeview.png "treeview")  
-Dies ist auch ein sehr simples Beispiel aber ein guter Startpunkt um ein Treeview zu nutzen.  
-## Dialog
-Wenn du es bevorzugst die Fenster und Dialoge mit einem Designtool zu entwerfen, dann kannst du den QtCreator nutzen, welche Bestandteil von Qt ist.
-Du kannst Qt und den QtCreator [hier](https://www.qt.io/download) runterladen.  
-
-Starte den QtCreator und erstelle einen Dialog im Design-Mode. 
-![qtcreator](../images/qtcreator.png "qtcreator")  
-
-Speicher den erstellten Dialog wird als *dialog.ui*. Im nachfolgenden Beipiel kannst du sehen, wie man den Dialog mit PyQt5 nutzen kann.  
-```python
-import sys
-from PyQt5.QtWidgets import QApplication
-from PyQt5.uic import loadUiType
-
-UIClass, QtBaseClass = loadUiType("dialog.ui")
-
-class MyApp(UIClass, QtBaseClass):
-    def __init__(self):
-        UIClass.__init__(self)
-        QtBaseClass.__init__(self)
-        self.setupUi(self)
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    window = MyApp()
-    window.show()
-    sys.exit(app.exec_())   
-```
-![dialog_ui](../images/dialog_ui.png "dialog_ui")
-Die Funktion loadUiType lädt den Dialog und liefert das Tupel (UIClass, QtBaseClass) zurück, welche wir nur noch initialisieren müssen.
+Abgesehen vom Datenmodell ist dies auch ein sehr simples Beispiel und ein guter Startpunkt um einen Treeview zu nutzen.  
+  
 ## MessageDialog
 Hier ist ein Beispiel um ein paar Möglichkeiten aufzuzeigen, um eine MessageBox zu nutzen.  
 
@@ -440,7 +438,8 @@ if __name__ == "__main__":
     win.show()
     sys.exit(app.exec())
 ```
-Behalte bitte in Erinnerung, dass man nicht mehrere MessageBoxen in Folge nutzen sollte.  
+Behalte bitte in Erinnerung, dass man nicht mehrere MessageBoxen in Folge nutzen sollte, da dies den Benutzer überfordern würde.  
+Um noch konkreter zu werden, sollte man MessageBoxen eigentlich nur dann verwenden, wenn man den Benutzer in seiner Arbeit unterbrechen möchte, um ihn auf einen Fehler oder ähnlichem hinzuweisen. Für beiläufige Nachrichten bietet sich die Statusbar an.   
 
 ![simplemsg](../images/simple_msg.png "simplemsg")  
 ![save](../images/save.png "save")  
@@ -565,11 +564,11 @@ if __name__ == "__main__":
     win.show()
     sys.exit(app.exec())
 ```
-Das DockWidget kann der Nutzer überall dort hinbewegen, wo es erlaubt ist. In unserem Beispiel ist es eingeschränkt auf den linken und den rechten Rand des Fensters.
+Das DockWidget kann der Nutzer überall dort hinbewegen, wo es erlaubt ist. In unserem Beispiel ist es eingeschränkt auf den linken und den rechten Rand des Fensters. Ein DockWidget kann der Benutzer mit der Maus verschieben, in dem er in die Titelzeile des Widgets klickt und das Widget mit gedrückter Maustaste verschiebt.
 ```python
 self.navigationdock.setAllowedAreas(Qt.LeftDockWidgetArea | Qt.RightDockWidgetArea)
 ```
-Eine ScrollArea kann Widgets aufnehmen, die grösser als der zur Verfügung stehenede Bereich im Fenster ist. Wenn es nicht möglich ist, das komplette Widget anzuzeigen, dann wird jeweils eine Scrollbar angezeigt, mit der der Nutzer in der Lage ist, das ganze Widget zu sichten. In unserem Beispiel werden die Scrollbars nur angezeigt, wenn etwas zu scrollen gibt (Qt.ScrollAsNeeded). Wenn das Widget in die ScrollArea reinpasst, werden keine ScrollBars angezeigt.
+Eine ScrollArea kann Widgets aufnehmen, die grösser als der zur Verfügung stehende Bereich im Fenster ist. Wenn es nicht möglich ist, das komplette Widget anzuzeigen, dann wird jeweils eine Scrollbar angezeigt, mit der der Nutzer in der Lage ist, das ganze Widget zu sichten. In unserem Beispiel werden die Scrollbars nur angezeigt, wenn etwas zu scrollen gibt (Qt.ScrollAsNeeded). Wenn das Widget in die ScrollArea reinpasst, werden keine ScrollBars angezeigt.
 
 *QWidget/UserDefined/expander.py*
 ```python
@@ -750,8 +749,8 @@ Zu allererst nutzen wir einen Label als Hyperlink.
 self.hyper.setText("<a style=\"color: " + self.label_normal_color + 
     " text-decoration: none\" href=\"#\">" + self.text + "</a>")
 ```
-Wenn wir einen QLabel wie hier benutzen, dann können wir auch auf das Signal linkActivated zugreifen ```linkActivated
-``` und ihn mit einem Slot verbinden.
+Wenn wir einen QLabel wie hier benutzen, dann können wir auch auf das Signal ```linkActivated
+``` zugreifen und ihn mit einem Slot verbinden.
 ```python
 self.hyper.linkActivated.connect(self.buttonClicked)
 ```
@@ -759,12 +758,14 @@ Der nächste Trick ist die Nutzung einer Animation (QParallelAnimationGroup, QPr
 ``` und die ```color
 ``` des Widgets.  
 Um die Farbe ```color
-``` animieren zu können, musste ich ein Property deklarieren.
+``` animieren zu können, mussten wir ein Property deklarieren. Der Getter ist hier nur ein Dummy, der die Farbe Schwarz zurückliefert. 
 ```python
+#getter
 @pyqtProperty('QColor')
 def color(self):
     return Qt.black
 
+#setter
 @color.setter
 def color(self, color):
     pal = self.palette()
@@ -773,7 +774,7 @@ def color(self, color):
 ```
 Ein anderer Trick ist die Nutzung einer SVG (**S**calable **V**ector **G**raphic) Grafik für das Icon.
 Für diesen Trick öffnen wir die Datei mit dem SVG, ersetzen eine bestimmte Farbe im Text mit der aktuellen Hilite-Farbe (SVG liegt im Textformat vor) und erstellen eine Pixmap auf Basis der SVG-Grafik.  
-Ich habe die SVG Grafiken mit InkScape erstellt und eine bestimmte Farbe auf #ff00ff gesetzt, damit sich sie einfach wiederfinden und ersetzen kann.  
+Die SVG Grafiken kann man z.B. mit InkScape erstellen und eine bestimmte Farbe auf #ff00ff setzen, damit sie sich einfach wiederfinden lässt und ersetzt werden kann.  
 Da SVG auf XML basiert kann man den Text einfach ersetzen.
 ```python
 data.replace("#ff00ff", hilite_color)
@@ -982,34 +983,34 @@ if __name__ == "__main__":
     sys.exit(app.exec_())
 ```
 ![markdown](../images/markdown.png "markdown")  
-Der WebEngineView ist ein voll fuktionsfähiger HTML-Browser-Widget und wird hier benutzt, um das aus dem Markdown erzeugte HTML darzustellen.
+Der WebEngineView ist ein voll fuktionsfähiges HTML-Browser-Widget und wird hier benutzt, um das aus dem Markdown erzeugte HTML darzustellen.
 
 Das Modul markdown2 wird hier benutzt um markdown in HTML zu verwandeln. Du kannst es wie folgt installieren:
 ```console
 user@machine:/path$ pip install markdown2 
 ```
-Die Methode ```writeSetting
+Die Methode ```writeSettings
 ```wird verwendet um die Geometrie des Fensters in einer Datei zu speichern und mit der Methode ```readSettings
-``` werden die Werte wieder verwendet um die Grösse und die letzte Position des Fensters wieder zu benutzen.  
+``` werden die Werte verwendet um die Grösse und die letzte Position des Fensters wieder zu benutzen.  
 
 Die Methode ```textChanged
 ``` wird jedes mal aufgerufen, wenn der Nutzer den Text im Editor ändert.
 In meinem Programm EbookCreator, das auf diesem Beispiel basiert, musste ich das Verhalten aus Gründen der Performance etwas anpassen. Der Code wird dort in einem Thread ausgeführt.  
 
-Die Aktionen wie new_act, open_act und save_act werden hier doppelt genutzt. Einmal im Menu und das andere Mal in der Toolbar.
+Die Aktionen wie new\_act, open\_act und save\_act werden hier doppelt genutzt. Einmal im Menu und das andere Mal in der Toolbar.
 
 Wenn du eine Aktion für ein Menu definierst, dann markierst du den Schnellzugriff mit "&". Zum Beispiel das "S" in der Action "&Save".  
-Diese Buchstaben dürfen nur einmal unter einem Menu benutzt werden. Wenn du alse "&Save" und "&Save as" nutzt, dann wird das SaveAs niemals mit einem Schnellzugriff aufgerufen werden können.   
+Diese Buchstaben dürfen nur einmal unter einem Menu benutzt werden. Wenn du also "&Save" und "&Save as" nutzt, dann wird das SaveAs niemals mit einem Schnellzugriff aufgerufen werden können. Wir weichen hier auf "Save &As" aus.  
 
 Das Widget QTextEdit kann mit einfachem Text und mit RichText betrieben werden. Hierfür nutzen wir die Methode ```self.text_edit.setPlainText(text)
 ``` um den Inhalt zu setzen.  
 
 In unserem Beispiel wird die Statusbar benutzt um Nachrichten anzuzeigen
 ```self.statusBar().showMessage("File loaded", 2000)
-``` und um Infos für einige Menuitems ```exit_act.setStatusTip("Exit the application") anzuzeigen.
-```
+``` und um Infos für einige Menuitems ```exit_act.setStatusTip("Exit the application") 
+```anzuzeigen.
 
-Der Editor aus obigem Beispiel war die Basis für meine Anwendung EbookCreator, mit der ich dieses Buch geschrieben habe. Der EbookCreator ist auch in Python und PyQt5 geschrieben und kann dir als  Inspiration helfen. Der Sourcecode ist [hier](https://github.com/Artanidos/EbookCreator) verfügbar.  
+Der Editor aus obigem Beispiel war die Basis für meine Anwendung EbookCreator, mit der ich dieses Buch geschrieben habe. Der EbookCreator ist auch in Python und PyQt5 geschrieben und kann dir als  Inspiration dienen. Der Sourcecode ist [hier](https://github.com/Artanidos/EbookCreator) verfügbar.  
 
 ##Zusammenfassung
-Wir haben gesehen, wie man alle relevanten Widgets in einer Desktop-Anwendung benutzt. Wir haben gesehen, wie eine komplette Anwendung, geschrieben in Python, aussehen kann. 
+Wir haben gesehen, wie man einige Widgets in einer Desktop-Anwendung benutzt und wie man Datenmodelle schreibt. Wir haben gesehen, wie eine komplette Anwendung, geschrieben in Python, aussehen kann und ausserdem haben wir ein paar Triks gesehen, mit der wir einer Anwendung ein bisschen Leben einhauchen können.

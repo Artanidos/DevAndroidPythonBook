@@ -25,7 +25,7 @@ Mit QtQuick kann man ausserdem Behaviours und Transitions deklarieren, welches m
 Wenn du einen Design Hintergrund hast, ist wahrscheinlich der QML-Ansatz interessanter für dich, da du hier nicht wirklich Code erzeugen musst.  
 Bist du eher der CoderTyp, dann ist evtl. QtWidgets die richtige Wahl für dich.    
 
-Im folgenden zeige ich dir allerdings gleich drei Varianten Qt Anwendungen zu schreiben.
+Im folgenden zeige ich dir allerdings gleich vier Varianten Qt Anwendungen zu schreiben.
 
 ##Hello World (QtWidgets)
 
@@ -177,6 +177,39 @@ Wie bereits gesagt, gehe ich auf die Entwicklung von QML-Anwendungen in diesem B
 Die Verwendung von QVBoxLayout wird etwas später in diesem Buch erläutert. In diesem Beispiel wird es benutzt, um ein Label und den Container vertikal anzuordnen.  
 Sei gewarnt nicht mehrere QQuickViews innerhalb eine Anwendung zu verwenden um Performance-Einbrüche zu vermeiden.  
 
+## Dialog
+Wenn du es bevorzugst die Fenster und Dialoge mit einem Designtool zu entwerfen, dann kannst du den QtCreator nutzen, welcher Bestandteil von Qt ist.
+Du kannst Qt und den QtCreator [hier](https://www.qt.io/download) runterladen.  
+
+Starte den QtCreator und erstelle einen Dialog im Design-Mode. 
+![qtcreator](../images/qtcreator.png "qtcreator")  
+
+Speicher den erstellten Dialog als *dialog.ui* ab. Im nachfolgenden Beipiel kannst du sehen, wie man den Dialog mit PyQt5 nutzen kann.  
+```python
+import sys
+from PyQt5.QtWidgets import QApplication
+from PyQt5.uic import loadUiType
+
+UIClass, QtBaseClass = loadUiType("dialog.ui")
+
+class MyApp(UIClass, QtBaseClass):
+    def __init__(self):
+        UIClass.__init__(self)
+        QtBaseClass.__init__(self)
+        self.setupUi(self)
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = MyApp()
+    window.show()
+    sys.exit(app.exec_())   
+```
+![dialog_ui](../images/dialog_ui.png "dialog_ui")  
+Die Funktion loadUiType lädt den Dialog und liefert das Tupel (UIClass, QtBaseClass) zurück, welche wir nur noch initialisieren müssen.  
+Mit ```setupUI()
+``` wird dann der Dialog und all seine Widgets initialisiert und angezeigt.
+
 ##Zusammenfassung
-Wir haben drei Möglichkeiten gesehen, um Anwendungen mit Qt5 zu erstellen.  
-Der QWidgets-Ansatz wird meist bei Desktop-Anwendungen genutzt. Der QML-Ansatz wird meist genutzt, um Anwendungen für mobile Geräte zu erstellen. Und die Kombination kann genutzt werden um QML innerhalb von Desktop-Anwendungen darzustellen.
+Wir haben vier Möglichkeiten gesehen, um Anwendungen mit Qt5 zu erstellen.  
+Der QWidgets-Ansatz wird meist bei Desktop-Anwendungen genutzt. Der QML-Ansatz wird meist genutzt, um Anwendungen für mobile Geräte zu erstellen. Und die Kombination kann genutzt werden um QML innerhalb von Desktop-Anwendungen darzustellen.  
+Wer lieber seine Userinfaces mit einem Designtool entwirft, wird wohl die letzte Variante verwenden.

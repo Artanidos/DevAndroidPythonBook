@@ -1,39 +1,40 @@
 #Teil V - Installation auf Linux
-On Linux, Windows and MacOS I prefer to use another tool called **PyInstaller** because it resolves all dependencies automatically.  
-To create a setup program I prefer to use the **QtInstallerFramework** delivered with Qt, because it is also cross platform and free to use.
+Auf Linux, Windows und MacOS bevorzuge ich ein anderes Werkzeug mit dem Namen **PyInstaller**, um ein Executable zu erstellen, da es Abhängigkeiten automatisch auflöst.  
+Um ein SetupProgramm zu erstellen benutze ich das **QtInstallerFramework**, welches mit Qt ausgeliefert wird, da es ebenfalls Cross Platform und kostenlos zu nutzen ist.
 
-##Install PyInstaller
-You can download PyInstaller using pip.
+##Installation von PyInstaller
+Du kannst PyInstaller mit pip installieren.
 
 ```console
 user@machine:/path$ pip3 install pyinstaller
 ```
-PyInstaller bundles a Python application and all its dependencies into a single package. The user can run the packaged app without installing a Python interpreter or any modules.
+PyInstaller kombiniert eine Python-Anwendung und alle Abhängigkeiten, inlusive Python selber, in ein Paket. Der Endnutzer kann auf diese Weise die Anwendung ausführen, ohne Python und dessen Module installieren zu müssen.
 
-##Install QtInstallerFramework
-Now we also need Qt. You can download it here: [https://www.qt.io/download](https://www.qt.io/download).
-You should install the following components.   
+##Installation von QtInstallerFramework
+Nun benötigen wir auch noch Qt selber. Du kannst es dir hier herunterladen: [https://www.qt.io/download](https://www.qt.io/download)  
+Du solltest die folgenden Komponenten installieren.
 ![installer](../images/installer.png "installer")  
-If there is no option for version 3.1 (Windows) then 3.0 will do also. 
+Wenn dort keine Option für die Version 3.1 (Windows) angezeigt wird, dann tut es auch Version 3.0.
 
-
-##Build Executable
-To create a package just run pyinstaller with the main python module as argument.
+##Paket Bilden
+Um ein Paket zu erstellen lasse einfach den pyinstaller mit deinem main.py als Argument laufen.
 ```console
 user@machine:/path$ pyinstaller main.py
 ```
+PyInstaller trägt alle nötigen Module zusammen und packt sie zusammen mit Python in ein Verzeichnis. Man spricht hierbei vom Freezing (Einfrieren). Der Endnutzer führt somit genau das Programm mit den Paketen in der Version aus, welche wir getestet haben.
 
-##Test Executable
-You can then test the compiled application running:
+##Paket Testen
+Du kannst die Anwendung wie folgt testen:
 ```console 
 user@machine:/path$ dist/main/main
 ```
+Theoretisch könntest du jetzt die Dateien aus dem Verzeichnis dist/main in eine ZIP-Datei packen und sie ausliefern, ich empfehle aber ein SetupProgramm zu erstellen, welches der Endnutzen einfach nur ausführen muss, um die Anwendung zu installieren. Hierfür nutzen wir das QtInstallerFramework.
 
-Theoretically you can now zip all files inside the dist/main directory, but I prefer to build a setup program which you may upload as a single file and therefore we use the QtInstallerFramework now.
+##Setup Paket Erstellen
+Um ein SetupProgramm zu erstellen, legen wir erst einmal ein Verzeichnis mit dem Namen *config* an.
+Innerhalb dieses Verzeichnisses legen wir die Datei *config.xml* mit folgendem Inhalt an.  
 
-##Create Setup Package
-Therefor we first create a folder named config.  
-Inside the config folder we now create a file named *config.xml*.  
+*config/config.xml*
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
   <Installer>
@@ -48,20 +49,20 @@ Inside the config folder we now create a file named *config.xml*.
     </Translations>
   </Installer>
 ```
-Fill in the following fields as follows:  
+Fülle die nachfolgenden Felder wie folgt:  
 
 | Field | Value |
 |  ---     |   ---     |
-|  Name   |   Name of the application     |
-|  Version   |   Version of the application    |
-|  Title   |   Name of the application    |
-|  Publisher   |   Your name / your company name    |
-|  TargetDir   |   Default install location    |
-|  Translation   |   Langage code of you application    |
+| Name | Name der Anwendung |
+| Version | Version der Anwendung |
+| Title | Name der Anwendung |
+| Publisher |   Dein Name / Firmenname |
+| TargetDir | Installationsverzeichnis |
+| Translation | Sprache der Anwendung |
 
-If you do not specify a language then Qt is taking the language of the operation system which is not always the best choice. In my case the OS is set to German but all of my application are written in English language.
+Wenn du keine Sprache angibst, dann nimmt Qt die Sprache deines Betriebssystemes, welches nicht immer gewünscht ist. In meinem Fall habe ich zum Beispiel eine deutsche Linux-Installation und möchte aber eine Anwendung in Englisch erstellen.  
 
-Now we create a folder named *packages* and inside of this folder another folder with the name *com.vendor.product*. Inside of this directory we create a folder named *data* where we will copy all the binaries later and a folder named *meta*. Inside the meta folder we are creating a new file named *package.xml* with the following content:  
+Nun erstellen wir ein Verzeichnis mit dem Namen *packages* und dort drinnen legen wir ein Verzeichnis mit dem Namen *com.vendor.product* an. In diesem Verzeichnis legen wir wiederum eines mit dem Namen *data* an, in die wir später die Binärdateien reinkopieren und ein Verzeichnis mit dem namen *meta*. In dem Verzeichnis meta erstellen wir eine Datei mit dem Namen *package.xml* mit dem folgenden Inhalt:  
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
   <Package>
@@ -72,23 +73,22 @@ Now we create a folder named *packages* and inside of this folder another folder
       <Default>true</Default>
   </Package>
 ```  
-
-Now we create a folder named *bin* inside of the *data* folder and then we copy all files from dist/main into this folder.
+Nun erstellen wir ein Verzeichnis mit dem Namen *bin* im Verzeichnis *data* und kopieren dort alle Dateien aus dem Verzeichnis *dist/main*.  
+Neben dem *bin* Verzeichnis können wir später auch noch Verzeichnisse für Plugins, Daten oder ähnlichem anlegen.
 
 ```console
 user@machine:/path$ mkdir packages/com.vendor.product/data/bin
 user@machine:/path$ cp -r dist/main/* packages/com.vendor.product/data/bin
 ```  
-
-Now its time to build the setup program. There we will run the following command:  
+Nun wird es Zeit, das SetupProgramm zu erstellen. Dafür führen wir folgenden Befehl aus:  
 ```console
 user@machine:/path$ binarycreator -f -c config/config.xml -p packages DemoApplication-Linux-1.0.0.Setup
-``` 
-This command will create the file DemoApplication-Linux-1.0.0.Setup which can be shipped to customers.  
-If you do not have a path to binarycreator you can find it under *Qt/Tools/QtInstallerFramework/3.1/bin*
+```   
+Dieser Befehl erstellt eine Datei mit dem Namen DemoApplication-Linux-1.0.0.Setup, welches an den Endnutzer ausgeliefert werden kann.  
+Solltest du keinen Pfad zum binarycreator haben, findest du es unter *Qt/Tools/QtInstallerFramework/3.1/bin*
 
-You can start the setup with just a double-click.  
+Du kannst das Setup-Programm starten, in dem du das erzeugte Programm ausführst.
 ![setup](../images/setup.png "setup")
 
 ##Zusammenfassung
-At the end we have also build an installation package which we can send to our customers of can publish on the internet. This package includes all necessary libraries and also Python itself. 
+Am Ende haben wir ein Setup-Programm für eine Python Anwendung erstellt, welches wir einfach an Endnutzer ausliefern können. Alle nötigen Pakete und selbst Python sind dort enthalten.

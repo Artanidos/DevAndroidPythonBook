@@ -1,71 +1,61 @@
 #Teil IV - Installation auf Android
 
-Now we are going to build an APK (**A**ndroid **P**ac**k**age).
-Therefore we first have to install a few other components. 
+Nun werden wir ein APK (**A**ndroid **P**ac**k**age) erstellen und es auf einem Android Gerät installieren.  
+Hierfür müssen wir ein paar zusätzliche Komponenten installieren.  
 
-##Install pyqtdeploy 2.4
-
-pyqtdeploy is a tool made by the same company who also created PyQt5.   
-You can install pyqtdeploy via pip.  
+##Installation von pyqtdeploy 2.4
+pyqtdeploy is eine Anwendung die von der selben Firma wie PyQt5 zur Verfügung gestellt wird.
+Du kannst pyqtdeploy mit pip installieren.  
 
 ```console
 user@machine:/path$ pip3 install pyqtdeploy
 ```
 
-##Install Java JDK 8
+##Installation von Java JDK 8
+Du solltest alles, was du zum Installieren von Java JDK 8 brauchst, hier finden: [https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html](https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)
 
-You should be able to find all you need to install Java JDK 8 here: [https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html](https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)
+Nur um es zu erwähnen, ich hatte Probleme ein Paket zu bilden, weil ich Java JDK 10 installiert hatte. Ich habe es deinstallieren müssen.
 
-Just to mention I had problem to build the package with Java JDK 10 installed. 
-
-##Install Android SDK
-
-To install the Android SDK go to [https://developer.android.com/studio](https://developer.android.com/studio) scroll down to *Command line tools only* and download the file for your platform.   
-Then unzip the file somewhere on your computer. 
-After unzipping go to the Sdk/tools/bin directory and run the sdkmanager to install all necessary tools:
+##Installation von Android SDK
+Um das Android SDK zu installieren gehe bitte zu [https://developer.android.com/studio](https://developer.android.com/studio) scrolle runter zu *Command line tools only* und lade die spezifische Version für deine Platform runter.  
+Dann entpacke diese Datei irgendwo auf deinem Computer.  
+Nachdem du alles entpackt hast, wechsle bitte in das Verzeichnis *../Sdk/tools/bin* und starte den sdkmanager um zusätzliche Werkzeuge zu installieren:
 
 ```console
 user@machine:/path$ ./sdkmanager "platform-tools" "platforms;android-28"
 ```
 
-##Install Android NDK
-
-To install the Android NDK go to [https://developer.android.com/ndk/downloads](https://developer.android.com/ndk/downloads) scroll down to *Older Versions*, click the link *NDK Archives*, agree to the terms and download *Android NDK, Revision 19c* for your platform (Unfortuneatly version 20 is not working for us yet).   
-After downloading unzip all the file into the SDK directory as *ndk-bundle*.
-Your Android directory should look like the following:   
+##Installation von Android NDK
+Um das Android NDK zu installieren, gehe bitte auf diese Seite [https://developer.android.com/ndk/downloads](https://developer.android.com/ndk/downloads) scrolle runter zu *Older Versions*, und klicke den Link *NDK Archives*, akzeptiere die Terms und lade *Android NDK, Revision 19c* für deine Platform runter (Unglücklicherweise funktioniert Version 20 nicht für unsere Zwecke). Nachdem du alles geladen hast, entpacke die Datei bitte in das SDK-Verzeichnis in das Unterverzeichnis *ndk-bundle*.  
+Deine Android-Verzeichnisstruktur sollte dann wie folgt aussehen:   
 ![AltText](../images/tree.png "Title")
 
-##Install Qt
-
-Now we also need Qt. You can download it here: [https://www.qt.io/download](https://www.qt.io/download).
-You should install the following components.   
+##Installation von Qt
+Nun benötigen wir auch Qt selber. Du kannst es hier runterladen: [https://www.qt.io/download](https://www.qt.io/download).
+Folgende Komponenten solltest du installieren.   
 ![AltText](../images/qt.png "Title")   
-You need Desktop to test your apps on the desktop.   
-You need Android x86 to test yours apps on a simulator.   
-You need Android ARM64 to test on a 64 bit device and   
-you need Android ARMv7 to test on a 32 bit device.
+Du benötigst Desktop gcc 64-bit um die App auf deinem Rechner zu testen.  
+Du benötigst Android x86 um die App im Simulator testen zu können.  
+Du benötigst Android ARM64 um die App auf einem 64 bit Gerät zu testen.  
+Du benötigst Android ARMv7 um die App auf einem 32 bit Gerät zu testen.
 
-##Download Source packages
+##Source Pakete runterladen
+Nachfolgende Pakete musst du lediglich runterladen aber nicht auspacken.  
 
--openssl-1.0.2s.tar.gz from [https://www.openssl.org/source/](https://www.openssl.org/source/)  
--PyQt3D_gpl-5.12.tar.gz from [https://www.riverbankcomputing.com/software/pyqt3d/download](https://www.riverbankcomputing.com/software/pyqt3d/download)  
--PyQt5_gpl-5.12.1.tar.gz from [https://www.riverbankcomputing.com/software/pyqt/download5](https://www.riverbankcomputing.com/software/pyqt/download5)  
--PyQtChart_gpl-5.12.tar.gz from [https://www.riverbankcomputing.com/software/pyqtchart/download](https://www.riverbankcomputing.com/software/pyqtchart/download)  
--PyQtDataVisualization_gpl-5.12.tar.gz from [https://www.riverbankcomputing.com/software/pyqtdatavisualization/download](https://www.riverbankcomputing.com/software/pyqtdatavisualization/download)  
--PyQtPurchasing_gpl-5.12.tar.gz from [https://www.riverbankcomputing.com/software/pyqtpurchasing/download](https://www.riverbankcomputing.com/software/pyqtpurchasing/download)  
--Python-3.7.2.tar.xz from [https://www.python.org/downloads/source/](https://www.python.org/downloads/source/)  
--QScintilla_gpl-2.11.1.tar.gz from [https://www.riverbankcomputing.com/software/qscintilla/download](https://www.riverbankcomputing.com/software/qscintilla/download)  
--qt-everywhere-src-5.12.2.tar.xz from [http://download.qt.io/official_releases/qt/5.12/5.12.2/single/qt-everywhere-src-5.12.2.tar.xz.mirrorlist](http://download.qt.io/official_releases/qt/5.12/5.12.2/single/qt-everywhere-src-5.12.2.tar.xz.mirrorlist)  
--sip-4.19.15.tar.gz from [https://www.riverbankcomputing.com/software/sip/download](https://www.riverbankcomputing.com/software/sip/download)  
--zlib-1.2.11.tar.gz from [https://zlib.net/](https://zlib.net/)  
+- openssl-1.0.2s.tar.gz from [https://www.openssl.org/source/](https://www.openssl.org/source/)  
+- PyQt3D_gpl-5.12.tar.gz from [https://www.riverbankcomputing.com/software/pyqt3d/download](https://www.riverbankcomputing.com/software/pyqt3d/download)  
+- PyQt5_gpl-5.12.1.tar.gz from [https://www.riverbankcomputing.com/software/pyqt/download5](https://www.riverbankcomputing.com/software/pyqt/download5)  
+- PyQtChart_gpl-5.12.tar.gz from [https://www.riverbankcomputing.com/software/pyqtchart/download](https://www.riverbankcomputing.com/software/pyqtchart/download)  
+- PyQtDataVisualization_gpl-5.12.tar.gz from [https://www.riverbankcomputing.com/software/pyqtdatavisualization/download](https://www.riverbankcomputing.com/software/pyqtdatavisualization/download)  
+- PyQtPurchasing_gpl-5.12.tar.gz from [https://www.riverbankcomputing.com/software/pyqtpurchasing/download](https://www.riverbankcomputing.com/software/pyqtpurchasing/download)  
+- Python-3.7.2.tar.xz from [https://www.python.org/downloads/source/](https://www.python.org/downloads/source/)  
+- QScintilla_gpl-2.11.1.tar.gz from [https://www.riverbankcomputing.com/software/qscintilla/download](https://www.riverbankcomputing.com/software/qscintilla/download)  
+- qt-everywhere-src-5.12.2.tar.xz from [http://download.qt.io/official_releases/qt/5.12/5.12.2/single/qt-everywhere-src-5.12.2.tar.xz.mirrorlist](http://download.qt.io/official_releases/qt/5.12/5.12.2/single/qt-everywhere-src-5.12.2.tar.xz.mirrorlist)  
+- sip-4.19.15.tar.gz from [https://www.riverbankcomputing.com/software/sip/download](https://www.riverbankcomputing.com/software/sip/download)  
+- zlib-1.2.11.tar.gz from [https://zlib.net/](https://zlib.net/)
 
-
-Do not unpack these files!!!   
-Just download them and copy them to a specific directory.
-
-##Create the build script
-
-You should change the paths in the following script to your needs.  
+##Den Build-Script erstellen
+Passe bitte die Pfade für deine Zwecke an.  
 
 *Deploy/build.sh*  
 ```bash
@@ -74,11 +64,13 @@ export ANDROID_NDK_PLATFORM=android-28
 export ANDROID_SDK_ROOT=/home/art/Android/Sdk
 python3.7 build.py --target android-32 --installed-qt-dir /home/art/Qt/5.12.3 --no-sysroot --verbose --source-dir ./external-sources
 ```
+external-sources zeigt auf ein Verzeichnis, in dem alle Pakete aus dem vorherigen Schritt gespeichert wurden.  
+Installierst du auf einem Android Gerät mit 64 bit, dann ändere bitte das target zu android-64.  
+--installed-qt-dir zeigt auf das Verzeichnis in dem Qt installiert wurde. 
 
-##Create the build.py script
-
-The build.py I have got from here: [https://pypi.org/project/pyqtdeploy/#files](https://pypi.org/project/pyqtdeploy/#files) from the Demo project.
-I have just added these lines of code: 
+##Erstelle den build.py Script
+Den build.py habe ich von hier: [https://pypi.org/project/pyqtdeploy/#files](https://pypi.org/project/pyqtdeploy/#files) aus dem Demo-Projekt.
+Ich habe dort folgende Zeilen hinzugefügt: 
 
 *Deploy/build.py* 
 ```python
@@ -95,30 +87,27 @@ with open(os.path.join(dir_path, build_dir, "main.pro"), "a") as fp:
 os.chdir(build_dir)
 ...
 ```
+Es ist wichtig, das das Programm androiddeployqt, welches zu Qt gehört und von pyqtdeploy aufgerufen wird, eine QML-Datei in diesem Verzeichnis findet. Das Programm scannt alle nötigen QML-Dateien nach import statements, um nötige shared libraries mit in das APK zu packen.   
 
-It is necessary that the androiddeployqt app will find a QML file in this directory. It scans all needed QML files for import statements to include the needed shared libraries into the APK.   
-androiddeployqt will be called by pyqtdeploy.  
+Du findest das komplette build.py und alle anderen Source-Dateien in diesem Github Repo: [https://github.com/Artanidos/DevAndroidPythonBook](https://github.com/Artanidos/DevAndroidPythonBook)  
 
-You can find the complete build.py and all other source files in the github repo: [https://github.com/Artanidos/DevAndroidPythonBook](https://github.com/Artanidos/DevAndroidPythonBook)  
+Mit dem ANDROID\_PACKAGE\_SOURCE_DIR deklarieren wir, das wir Android spezifische Dateien wie zum Beispiel *AndroidManifest.xml* und die Icons in einem bestimmten Verzeichnis abgelegt haben.  
+Ausserdem haben wir ein Theme dort abgelegt. 
+Dieses Theme hat nur einen wichtige Eintrag:
+*Theme.DeviceDefault.Light.NoActionBar*.
+Hiermit verhindern wir, das der Standard SplashScreen von Qt angezeigt wird, wenn die App gestartet wird.  
 
-With the ANDROID*PACKAGE*SOURCE_DIR we specify that we have got Android specific files like the *AndroidManifest.xml* and the icons in this specific folder.   
-Also an app theme is included there. This theme only has one important thing *Theme.DeviceDefault.Light.NoActionBar*.
-This is needed to make the splash screen look not so ugly.   
-This is the default splash screen. With this little change the screen is just white.  
-
-![AltText](../images/galery.png "Title")
-
-##Create the resource file
-
-The resource file will contain our QML file as a python resource.   
-To build the resource run the following.  
-
+Nachfolgend wird der Standard SplashScreen von Qt gezeigt.  
+![AltText](../images/galery.png "Title")  
+Wir ändern diesen Screen in einen schlichten weissen Hintergrund, da wir ansonsten drei verschiedene Screens beim Starten der Anwendung erhalten würden. Einmal den oberen, dann wird kurz ein weisser Screen gezeigt und dann das eigentlich Programm. Wir reduzieren die Anzahl auf lediglich zwei unterschiedliche Screens, damit es beim Starten nicht so flackert.    
+##Resource Datei erstellen
+Die Resource Datei enthält unsere QML-Datei als Python Resource.  
+Um eine Resource Datei zu erstellen muss man folgenden Befehl ausführen.
 ```console
 user@machine:/path$ pyrcc5 main.qrc -o lib/main_rc.py
 ```
-
-This is needed to find the QML later on the device. 
-After these changes we have to change the main.py as follows:  
+Dieser Schritt ist nötig, damit die QML Datei später auf dem Gerät gefunden wird.
+Nach dem wir nun eine Resource-Datei haben, müssen wir die main.py wie folgt anpassen.  
 
 *Deploy/main.py*  
 ```python
@@ -136,12 +125,12 @@ if __name__ == "__main__":
     sys.exit(app.exec())
 ```
 
-With ```import lib.main_rc``` we add the resource file.   
-And with the double point in **:**/view.qml we will tell Qt to load this file from a resource.
+Mit ```import lib.main_rc
+``` fügen wir die Resource hinzu.   
+Und mit den Doppelpunkt vor **:**/view.qml teilen wir Qt mit, die QML aus der Resource zu laden.
 
-##Create a project file
-
-The project file has the name demo.pdy and is needed for pyqtdeploy to be able to freeze all necessary packages.  
+##Eine Projekt-Datei erstellen
+Die Projektdatei hat den Namen demo.pdy und wird von pyqtdeploy benutzt, um alle nötigen Python Pakete einzufrieren.
 
 *Deploy/demo.pdy*
 ```xml
@@ -191,19 +180,17 @@ The project file has the name demo.pdy and is needed for pyqtdeploy to be able t
 <ExternalLib defines="" includepath="" libs="-lz" name="zlib" target="android" />
 </Project>
 ```
-
-One important thing here is the fact that we need a directory for all other python files to be included into the APK. We are using *lib* here.  Inside this directory should be an empty file named *\__init__.py*.     
-Then all needed Qt packages are defined here. (We don't need all of them but maybe later).   
-And also all needed standard python libraries are listed here.
-This file can be produced using this command in the terminal:  
+Eine wichtige Sache hier ist die Tatsache, das wir ein Verzeichnis benötigen, in dem alle Python-Dateien unserer Anwendung zu finden sind. Wir benutzen hier das Verzeichnis *lib*. In diesem Verzeichnis sollte sich auch eine leere Datei mit dem Namen *\__init__.py* befinden.  
+Alle benötigten PyQt Module sollten in dieser Projektdatei aufgelistet werden. (Wir benötigen nicht alle, aber evtl. später)     
+Ausserdem werden hier alle benötigten Python Pakete gelistet.  
+Die Datei kann mit dem Programm pyqtdeploy erstellt werden:  
 
 ```console
 user@machine:/path$ pyqtdeploy
 ```
 
-##Create sysroot.json
-
-This file hold all properties necessary to create a sysroot directory where some tools will be compiled. 
+##sysroot.json erstellen
+Diese Datei enthält alle Einstellungen um die das sysroot Verzeichnis zu erstellen. Die sysroot enthält ein paar Werkzeuge um das APK zu erstellen. 
 
 *Deploy/sysroot.json* 
 ```json
@@ -275,26 +262,26 @@ This file hold all properties necessary to create a sysroot directory where some
 }
 ```
 
-##Build the APK
-
-If all went well we are now able to build the APK and deploy it to a device.
-Therefore we run ```./build.sh``` in the terminal. Make sure that *build.sh* is executable.
-This first will create a sysroot directory with tools and libraries. If you are going to build the APK a second time you can skip building the sysroot with this option in the *build.sh*: 
+##APK Erstellen
+Wenn alles glatt laufen sollte sind wir nun in der Lage, das APK zu erstellen und es auf dem Gerät zu installieren.
+Hierfür lassen wir folgenden Befehl im Terminal laufen: ```./build.sh
+```  Stelle sicher, das *build.sh* ausführbar ist.
+Zuerst erzeugt dieser Script die sysroot mit den Werkzeugen und Bibliotheken und danach wird das eigentliche APK erstellt. 
+Wenn du das APK zum zweiten mal bilden möchtest, kannst du den ersten Schritt überspringen, in dem du in der Datei *build.sh* das Flag --no-sysroot einfügst: 
 
 ```
 --no-sysroot
 ```
 
-##Install APK to device
-
-When you have successfully build the APK you are now able to install it to your device.   
-First of all make sure the developer-mode is switched on on your device. If not you have to switch it on first.   
-Open your device settings app. Look for "About you phone" and search for the "Build Number". Then you have to tap on it seven times.   
-You should get a message that the developer options are now turned on. 
-Connect your device to your computer using a USB cable.   
-Now open the developer option in the settings app and look for USB-Configuration. Normally it is set to "Just load". Change it now to media transfer protocol (MTP).   
-Then look for USB-Debugging and switch it to on.   
-This done you are now able to find your device with the adb command:  
+##Installaliere das APK auf einem Gerät
+Wenn du das APK erfolgreich bilden konntest, dann kannst du es auf deinem Android-Gerät installieren.  
+Stell zuerst den Entwicklermodus auf deinem Gerät ein.  
+Hierfür öffnest du die Einstellungen-App. Dann öffnest du den Menupunkt "Über das Telefon", welches du wohl unter "System" finden wirst, je nach Version von Android.  
+Dort tippst du sieben mal auf die "Build-Nummer" und eine Meldung zeigt dir an, das der Entwickler-Modus aktiviert wurde.  
+Suche nun den Menupunkt, "Entwickleroptionen" und verbinde das Gerät mit deinem Computer.  
+Suche in den Optionen nach "USB-Konfiguration auswählen" und aktiviere Media Transfer Protocol (MTP). Normal steht diese Option auf "Nur Laden".  
+Dann aktiviere das "USB-Debugging".  
+Dein Gerät kann nun mit dem Befehl adb gefunden werden:  
 
 ```console
 user@machine:/path$ adb devices
@@ -303,20 +290,18 @@ List of devices attached
 * daemon started successfully
 5WH6R19329010194    device
 ```
-
-If your device is listed copy the string to the left and paste it into the terminal:  
+Wenn dein Gerät gelistet wird, dann kopiere bitte den linken Teil mit der Nummer und vervollständige den nachfolgen Befehl:  
 
 ```console
 user@machine:/path$ adb -s 5WH6R19329010194 install /home/art/Sourcecode/Python/Book/Deploy/build-android-32/dynpy/build/outputs/apk/debug/demo-debug.apk
 ```
+Der Pfad muss natürlich noch angepasst werden, er wird vom build.py ausgegeben. 
+Den kompletten Befehl habe ich in die Datei *deploy.sh* kopiert, um ihn wiederzuverwenden.
 
-Also copy the APK path which will be displayed after the build process has finished.
-
-I have put the whole command into the *deploy.sh* file to use it later.
+Nun sollte das Programm in Form eines Icons auf dem Gerät sichtbar sein. 
 
 ##Zusammenfassung
 
-Hopefully we have deployed the demo app to our device. 
-To find out how to build and deploy to Android took me several days.   
-If you are running into trouble here don't hesitate to contact me.   
-Maybe I can help you out and publish our experience into the next version of this book so that other people are not running into trouble.
+Nun haben wir hoffentlich eine Anwendung auf einem Android-Gerät installiert und zum Laufen gebracht.
+Wie man eine Anwendung unter Android installiert hat mich mehrere Tage gekostet.  
+Solltest Du auch Probleme damit haben, kannst du mich gerne kontaktieren. Eventuell kann ich dir ja helfen und die Erkenntnisse für andere in dieses Buch packen, damit die anderen Leser nicht die selben Fehler bekommen.
