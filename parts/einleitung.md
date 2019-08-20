@@ -18,17 +18,17 @@ Wo wir grad dabei sind...um dieses Buch schreiben zu können, habe ich eine Appl
 Gestern habe ich ein Video mit "Uncle" Bob Martin über das Programmieren in der Zukunft gesehen. Er sagt, das sich alle 5 Jahre die Zahl der Softwareentwickler verdoppelt. Das bedeutet, das um die 50% aller Entwickler unerfahren sind.
 Er sagte auch, das die erfahrenen Entwickler dafür verantwortlich sind, wenn z.B. ein selbst fahrendes Auto einen Menschen umfährt und tötet, nur weil ein Softwarefehler vorlag. Als ich das Heute gehörte habe, habe ich mich entschlossen andere Entwickler auszubilden und habe mit diesem Buch begonnen. 
 
-##Für wen ist dieses Buch
+##Für Wen Ist Dieses Buch
 Wenn du in der Lage bist, einfache Programme in Python zu schreiben und interessiert bist Anwendungen mit einem grafischem Benutzer-Interface für alle möglichen Platformen zu schreiben, dann ist dieses Buch genau das richtige für dich.  
 Du musst dich nicht unbedingt mit Qt auskennen.  
 Wenn du willst, probiere alle Beispiele aus diesem Buch selber aus. Von Vorteil wäre es, wenn du auch, wie ich, auf Linux arbeitest. Die Beispiele sollten aber auch mühelos auf MacOS und Windows laufen. Lediglich für die Installation der benötigten Software solltest du dich selber im Internet einlesen, da ich nur die nötigen Schritte für Linux erkläre.  
 
-##Für wen ist dieses Buch nicht
+##Für Wen Ist Dieses Buch Nicht
 
 Solltest du noch ein Anfänger in Python sein, dann schlage ich dir vor, erst einmal einen geeigneten Grundkurs für Python zu machen, bevor du in diesem Buch weiterliest. Es gibt hierfür tolle Bücher und eine Menge Videos auf Youtube.  
 In diesem Buch gehe ich nicht in Python spezifische Details ein.
 
-##Wie dieses Buch organisiert ist
+##Wie Dieses Buch Organisiert Ist
 
 Hier findest du die Übersicht über die Teile dieses Buches.  
 Zuerst werden wir in ***Teil I*** alle nötigen Werkzeuge zum Erstellen der Software mit PyQt5 und Python installieren.  
@@ -38,7 +38,7 @@ In ***Teil IV*** lernst du, wie man ein APK erstellt, um es auf einem Android De
 Und in ***Teil V*** wirst du lernen, wie man ein Setup Programm erstellt, um Python Software auf Linux zu installieren. 
 
 
-##Konventionen in Diesem Buch
+##Konventionen In Diesem Buch
 
 In diesem Buch nutze ich folgende typografischen Konventionen. 
 

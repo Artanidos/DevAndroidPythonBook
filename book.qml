@@ -3,7 +3,7 @@ import EbookCreator 1.0
 Ebook {
     name: "Erstelle Cross Platform GUI Applikationen mit Python, Qt und PyQt5"
     language: "de"
-    theme: "Epub3"
+    theme: "Epub2"
     creator: "Olaf Japp"
     Part {
         src: "einleitung.md"
