@@ -3,7 +3,7 @@ import EbookCreator 1.0
 Ebook {
     name: "Develop Cross Platform apps using Python and PyQt5"
     language: "en"
-    theme: "Epub2"
+    theme: "Epub3"
     creator: "Artanidos"
     Part {
         src: "preface.md"
